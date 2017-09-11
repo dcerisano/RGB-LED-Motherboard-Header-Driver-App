@@ -40,4 +40,4 @@ A: Yes, but that will increase CPU usage accordingly.<br><br>
 Q: Can I create my own effects?<br>
 A: Yes - hack away at the scripts. Hacking the RGB driver is not recommended for beginners.<br><br>
 Q: Might the RGB Sync App be available soon?<br>
-A: Yes, it certainly might.
+A: Yes, it certainly might be.
