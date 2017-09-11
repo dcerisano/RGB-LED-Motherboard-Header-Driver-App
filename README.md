@@ -1,4 +1,4 @@
-![](http://standard3d.com/assets/img/RGB-ALL-THE-THINGS-header.gif)
+![](http://standard3d.com/assets/img/rgb-gui.jpg)
 
 Cross-platform, cross-motherboard synchronized RGB effects.<br>
 <i>Currently only for distros and mobos supported by</i> [github.com/nagisa/msi-rgb](https://github.com/nagisa/msi-rgb)
