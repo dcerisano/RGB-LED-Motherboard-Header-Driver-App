@@ -30,11 +30,11 @@ Cross-platform, cross-motherboard synchronized RGB effects.<br>
   `rgb-cpu-thruster.sh`<br>
   `rgb-sound-visualizer.sh`
   
-<b>FAQ</b>
+<b>FAQ</b><br>
 Q: Do these effects have any system overhead?<br>
 A: Very little - around 1% of a single CPU thread.<br><br>
 Q: Can I run ALL the effects at the same time?<br>
 A: Yes, but that will increase CPU usage accordingly.<br>
-Q: Can I create my own effects?
+Q: Can I create my own effects?<br>
 A: Yes -tweak away at the code. The RGB Sync App should be available soon (Desktop, Web, Mobile, etc)
 
