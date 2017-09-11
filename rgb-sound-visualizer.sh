@@ -22,7 +22,7 @@
 #
 #   ./rgb-sound-visualizer.sh &
 #
-# To run as autostarting user service (your system must support modern systemctl):
+# To run as auto-starting user service (your system must support modern systemctl):
 #   
 #   sudo cp ./rgb-sound-visualizer.service /etc/systemd/user
 #   sudo cp ./target/release/msi-rgb       /usr/local/bin
