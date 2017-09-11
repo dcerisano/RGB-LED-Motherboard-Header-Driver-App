@@ -29,6 +29,7 @@ Cross-platform, cross-motherboard synchronized RGB effects.<br>
 - Run the effects as outlined in these scripts (follow the instructions):<br>
   `rgb-cpu-thruster.sh`<br>
   `rgb-sound-visualizer.sh`<br><br>
+
 <b>FAQ</b><br><br>
 Q: Why does this not work on my OS/motherboard?<br>
 A: The RGB driver is being expanded to cover more distro/mobo combos.<br><br>
