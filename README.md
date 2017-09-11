@@ -23,8 +23,7 @@ Cross-platform, cross-motherboard synchronized RGB effects.<br>
 
 <b>INTRSUCTIONS</b>
 
-- Build msi-rgb as outlined in [github.com/nagisa/msi-rgb](https://github.com/nagisa/msi-rgb)<br>
-  `sudo apt install rustc cargo`<br>
+- Build RGB driver<br>
   `cargo build --release`<br>
   
 - Run the effects as outlined in these scripts:<br>
