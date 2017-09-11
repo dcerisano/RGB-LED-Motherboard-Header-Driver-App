@@ -31,11 +31,13 @@ Cross-platform, cross-motherboard synchronized RGB effects.<br>
   `rgb-sound-visualizer.sh`
   
 <b>FAQ</b><br><br>
+Q: Why does this not work on my OS/motherboard?<br>
+A: The RGB driver is being expanded to cover more distro/mobo combos.<br><br>
 Q: Do these effects have any system overhead?<br>
 A: Very little - around 1% of a single CPU thread.<br><br>
 Q: Can I run ALL the effects at the same time?<br>
 A: Yes, but that will increase CPU usage accordingly.<br><br>
 Q: Can I create my own effects?<br>
-A: Yes -hack away at the scripts. Hacking the RGB driver is not recommended for beginners.<br><br>
+A: Yes - hack away at the scripts. Hacking the RGB driver is not recommended for beginners.<br><br>
 Q: Will the RGB Sync App be available soon?<br>
 A: Yes
