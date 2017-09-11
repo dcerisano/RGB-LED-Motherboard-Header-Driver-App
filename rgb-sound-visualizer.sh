@@ -27,8 +27,9 @@
 #   sudo cp ./rgb-sound-visualizer.service /etc/systemd/user
 #   sudo cp ./target/release/msi-rgb       /usr/local/bin
 #   sudo cp ./rgb-sound-visualizer.sh      /usr/local/bin
-#   sudo systemctl --user enable rgb-sound-visualizer
-#   sudo systemctl --user start  rgb-sound-visualizer
+#   sudo chmod u+s /usr/local/bin/msi-rgb
+#   systemctl --user enable rgb-sound-visualizer
+#   systemctl --user start  rgb-sound-visualizer
 #
 # Using the mixer on your volume control (while visualizer is running)
 # Go to the Recording tab and choose:
