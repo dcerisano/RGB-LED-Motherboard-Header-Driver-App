@@ -32,5 +32,5 @@ Cross-platform, cross-motherboard synchronized RGB effects.<br>
 <b>FAQ</b>
 
 Q: Can I run ALL the effects at the same time?<br>
-A: Yes, but that will increase CPU usage and does not really look good anyway ..
+A: Yes, but that will increase CPU usage.
 
