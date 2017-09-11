@@ -32,6 +32,11 @@
 #   sudo systemctl enable rgb-cpu-thruster
 #   sudo systemctl start  rgb-cpu-thruster
 #   
+# To stop system service:
+#   sudo systemctl stop rgb-cpu-thruster
+#
+# To disable system service:
+#   sudo systemctl disable rgb-cpu-thruster
 #
 ###############################################################################
 

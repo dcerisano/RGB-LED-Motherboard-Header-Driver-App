@@ -31,6 +31,13 @@
 #   systemctl --user enable rgb-sound-visualizer
 #   systemctl --user start  rgb-sound-visualizer
 #
+# To stop user service:
+#   sudo systemctl stop rgb-sound-visualizer
+#
+# To disable user service:
+#   sudo systemctl disable rgb-sound-visualizer
+#
+# IMPORTANT - CHOOSE AUDIO SOURCE (Music or Microphone)
 # Using the mixer on your volume control (while visualizer is running)
 # Go to the Recording tab and choose:
 #   Capture from Monitor of HD Audio, or:
