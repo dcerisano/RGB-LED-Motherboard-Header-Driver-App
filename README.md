@@ -4,11 +4,11 @@
 - <i>Requires good understanding of shell scripting.</i><br>
 <br>
 
-<b>Goals - RGB all things:</b>
+<b>Goals: RGB all things!</b>
 
-- <b><i>ALL THE EFFECTS</i></b> RGB Sync App for creating effects (CPU, audio/video, network ..)
-- <b><i>ALL THE PLATFORMS</i></b> Cross distro (OSX, Linux, Windows ..)
-- <b><i>ALL THE MOTHERBOARDS</i></b> Cross mobo (Asus, ASRock, MSI ..)
+- <b><i>All the effects</i></b> RGB Sync App for creating effects (CPU, audio/video, network ..)
+- <b><i>All the platforms</i></b> Cross distro (OSX, Linux, Windows ..)
+- <b><i>All the motherboards</i></b> Cross mobo (Asus, ASRock, MSI ..)
 <br>
 
 
