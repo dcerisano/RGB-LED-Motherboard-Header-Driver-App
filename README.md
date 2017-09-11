@@ -1,9 +1,8 @@
-Cross-platform, cross-motherboard synchronized RGB effects.<br>
-<i>- Currently only for distros and mobos supported by</i> [github.com/nagisa/msi-rgb](https://github.com/nagisa/msi-rgb)<br>
-<i>- Requires good understanding of shell scripting.</i><br>
+<b>Cross-platform, cross-motherboard synchronized RGB effects.</b><br>
+- <i>Currently only for distros and mobos supported by</i> [github.com/nagisa/msi-rgb](https://github.com/nagisa/msi-rgb)<br>
+- <i>Requires good understanding of shell scripting.</i><br>
 <br>
-<b>GOAL - RGB ALL THE THINGS!</b>
-
+<b>GOAL - RGB ALL THE THINGS!</b><br>
 - <b><i>ALL THE EFFECTS</i></b> RGB Sync App for creating effects (CPU, audio/video, network ..)
 - <b><i>ALL THE PLATFORMS</i></b> Cross distro (OSX, Linux, Windows ..)
 - <b><i>ALL THE MOTHERBOARDS</i></b> Cross mobo (Asus, ASRock, MSI ..)
