@@ -39,5 +39,5 @@ Q: Can I run ALL the effects at the same time?<br>
 A: Yes, but that will increase CPU usage accordingly.<br><br>
 Q: Can I create my own effects?<br>
 A: Yes - hack away at the scripts. Hacking the RGB driver is not recommended for beginners.<br><br>
-Q: Will the RGB Sync App be available soon?<br>
+Q: Might the RGB Sync App be available soon?<br>
 A: Yes
