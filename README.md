@@ -32,7 +32,7 @@ Cross-platform, cross-motherboard synchronized RGB effects.<br>
 
 <b>FAQ</b><br><br>
 Q: Why does this not work on my OS/motherboard?<br>
-A: The RGB driver is being expanded to cover more distro/mobo combos.<br><br>
+A: Contribute to githib.com/nagisa/msi-rgb to cover more distro/mobo combos.<br><br>
 Q: Do these effects have any system overhead?<br>
 A: Very little - around 1% of a single CPU thread.<br><br>
 Q: Can I run ALL the effects at the same time?<br>
