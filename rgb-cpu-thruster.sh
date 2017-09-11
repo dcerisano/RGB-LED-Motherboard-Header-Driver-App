@@ -9,16 +9,22 @@
 #
 # Special Requirements:
 #
-#   Nuvoton nct6775 compatible SIO supported by many modern motherboards
-#   systemctl (systemd)
-#   fancontrol (if you want synchronized case fan effect)
-#     sudo apt install fancontrol
+#   Motherboard supported by github.com/nagisa/msi-rgb
+#   fancontrol
+#     sudo apt install lm-sensors fancontrol
 #     sudo /sbin/modprobe nct6775 force_id=0xd120
-#     sudo pwmconfig (choose any case fan,  eg. hwmon0/pwm3)
+#     sudo pwmconfig (choose any CASE fan,  eg. hwmon0/pwm3)
+#
+# To build RGB driver:
+#
+#    sudo apt install rustc cargo
+#    cargo --cargo build --release
+#    sudo chown root /target/release/msi-rgb
+#    sudo chmod u+s ./target/release/msi-rgb
 #
 # To test from your git repo:
 #
-#   sudo     ./rgb-cpu-thruster.sh &
+#   sudo ./rgb-cpu-thruster.sh &
 #
 # To run as auto-starting system service:
 #
@@ -26,6 +32,7 @@
 #   sudo cp ./target/release/msi-rgb   /usr/local/bin
 #   sudo cp ./rgb-cpu-thruster.sh      /usr/local/bin
 #   sudo systemctl enable rgb-cpu-thruster
+#   sudo systemctl start  rgb-cpu-thruster
 #   
 #
 ###############################################################################
@@ -39,7 +46,7 @@
   d=4
 
 # FAN CONSTANTS
-# The case fan you selected during pwmconfig - NOT the CPU fan!
+# The CASE fan you selected during pwmconfig - NOT the CPU fan!
   fan=hwmon0/pwm3 
   pwm_step=12
   pwm_min=85
@@ -49,6 +56,7 @@
 
 # Check if running as service
   rgb_driver="./target/release/msi-rgb"
+  echo "`systemctl is-active rgb-cpu-thruster`" HEY!!
   if [ "`systemctl is-active rgb-cpu-thruster`" = "active" ] 
     then
       echo ALERT: rgb-cpu-thruster service is active
@@ -69,11 +77,12 @@
     int=${cpu%.*}
     c=$(printf '%x\n' $int)
     b=$c$c$c$c$c$c$c$c
+    
     # Set msi-rgb animation arrays
     # Default given here is an afterburner spectrum (amber to blue)
     # Note that the bytes are little endian, so:
     # Expected curve of 12345678 must be set as 21436587
-
+    
     $rgb_driver $r $g $b -d $d
   
     # Sync fan to CPU load

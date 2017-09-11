@@ -9,47 +9,47 @@
 #
 # Special Requirements:
 #
-#   ALSA (Pulse) Audio
+#   Pulse Audio
 #
-# To test from your git repo:
+# To build RGB driver:
 #
-#   sudo     ./rgb-sound-vumeter.sh &
+#    sudo apt install rustc cargo
+#    cargo --cargo build --release
+#    sudo chown root /target/release/msi-rgb
+#    sudo chmod u+s ./target/release/msi-rgb
 #
-# To run as autostarting system service (your system must support modern systemctl):
+# To test from your git repo: 
 #
-#   sudo cp ./rgb-sound-visualizer.service /etc/systemd/system
+#   ./rgb-sound-visualizer.sh &
+#
+# To run as autostarting user service (your system must support modern systemctl):
+#   
+#   sudo cp ./rgb-sound-visualizer.service /etc/systemd/user
 #   sudo cp ./target/release/msi-rgb       /usr/local/bin
 #   sudo cp ./rgb-sound-visualizer.sh      /usr/local/bin
-#   sudo systemctl enable rgb-sound-visualizer
-#   sudo systemctl start  rgb-sound-visualizer
+#   sudo systemctl --user enable rgb-sound-visualizer
+#   sudo systemctl --user start  rgb-sound-visualizer
 #
-# Using the alsa mixer on your volume control while this script is running:
+# Using the mixer on your volume control (while visualizer is running)
 # Go to the Recording tab and choose:
-#   ALSA Capture from Monitor of HD Audio , or:
-#   ALSA Capture from Microphone
-# Adjust recording and output levels to desired sensitivity.
+#   Capture from Monitor of HD Audio, or:
+#   Capture from Microphone
+# Adjust input and output levels to desired sensitivity (important).
 
-
-
-
-# Sample Rate and Period Sizes
-# Larger value increases sensitivity and CPU load.
-  samplerate=2000 
-# Smaller value increases sensitivity and CPU load.
-  periodsize=100   
-
-# RGB CONSTANTS
-  r=00000000
-  g=00000000
-  b=00000000
-  d=4
+# Visualizer Constants
+  samplerate=2000 # Larger value increases sensitivity and CPU load.
+  periodsize=100  # Smaller value increases sensitivity and CPU load.
+  r=00000000      # RED
+  g=00000000      # GREEN
+  b=00000000      # BLUE
+  d=4             # DELAY (ms)
   
 # Graceful exit: turn off RGB effect.
   trap 'USER=root; $rgb_driver 0 0 0 -p; exit 1' SIGINT SIGTERM EXIT
 
-# Check if running as service
+# Check if running as user service
   rgb_driver="./target/release/msi-rgb"
-  if [ "`systemctl is-active rgb-sound-visualizer`" = "active" ] 
+  if [ "`systemctl --user is-active rgb-sound-visualizer`" = "active" ] 
     then
       echo ALERT: rgb-sound-visualizer service is active
       rgb_driver="/usr/local/bin/msi-rgb"
@@ -58,11 +58,10 @@
 # This command outputs an endless stream of max peak volume levels to stderr 
 # which are converted to RGB.
 
-  (arecord -c 2 -d 0  -r $samplerate --period-size $periodsize -vvv) 2>&1 >/dev/null |
+  (arecord -c 2 -d 0 -f S16_LE -r $samplerate --period-size $periodsize -vvv) 2>&1 >/dev/null |
 
   while read line
   do
-    echo $line
     # Look for max peak percentages
     if [[ $line == *[%]* ]]
     then

@@ -2,7 +2,7 @@
 Description= RGB Sound Visualizer
 
 [Install]
-WantedBy=basic.target
+WantedBy=multi-user.target
 
 [Service]
 ExecStart=/usr/local/bin/rgb-sound-visualizer.sh
