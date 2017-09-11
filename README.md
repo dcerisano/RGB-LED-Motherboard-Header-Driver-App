@@ -25,7 +25,7 @@ Cross-platform, cross-motherboard synchronized RGB effects.<br>
   `sudo apt install rustc cargo`<br>
   `cargo build --release`<br>
   
-- Run the effects as outlined in these scripts:<br>
+- Run the effects as outlined in these scripts (follow the instructions):<br>
   `rgb-cpu-thruster.sh`<br>
   `rgb-sound-visualizer.sh`
   
