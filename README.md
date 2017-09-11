@@ -4,7 +4,7 @@
 - <i>Requires good understanding of shell scripting.</i><br>
 <br>
 
-<b>GOALS - RGB ALL THE THINGS!</b>
+<b>Goals - RGB all things:</b>
 
 - <b><i>ALL THE EFFECTS</i></b> RGB Sync App for creating effects (CPU, audio/video, network ..)
 - <b><i>ALL THE PLATFORMS</i></b> Cross distro (OSX, Linux, Windows ..)
