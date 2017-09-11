@@ -32,10 +32,10 @@
 #   systemctl --user start  rgb-sound-visualizer
 #
 # To stop user service:
-#   sudo systemctl stop rgb-sound-visualizer
+#   systemctl stop rgb-sound-visualizer
 #
 # To disable user service:
-#   sudo systemctl disable rgb-sound-visualizer
+#   systemctl disable rgb-sound-visualizer
 #
 # IMPORTANT - CHOOSE AUDIO SOURCE (Music or Microphone)
 # Using the mixer on your volume control (while visualizer is running)
