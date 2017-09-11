@@ -19,8 +19,6 @@
 #
 #    sudo apt install rustc cargo
 #    cargo --cargo build --release
-#    sudo chown root /target/release/msi-rgb
-#    sudo chmod u+s ./target/release/msi-rgb
 #
 # To test from your git repo:
 #
