@@ -1,7 +1,7 @@
 Cross-platform, cross-motherboard synchronized RGB effects.<br>
 <i>Currently only for distros and mobos supported by</i> [github.com/nagisa/msi-rgb](https://github.com/nagisa/msi-rgb)
 
-<b>GOALS</b>
+<b>GOAL - RGB ALL THE THINGS!</b>
 
 - <b><i>ALL THE EFFECTS</i></b> RGB Sync App for creating effects (CPU, audio/video, network ..)
 - <b><i>ALL THE PLATFORMS</i></b> Cross distro (OSX, Linux, Windows ..)
@@ -19,7 +19,7 @@ Cross-platform, cross-motherboard synchronized RGB effects.<br>
 ![](http://standard3d.com/assets/img/rgb-gui-placeholder4.gif)<br><br>
 
 
-<b>INTRSUCTIONS</b>
+<b>INSTRUCTIONS</b>
 
 - Build RGB driver<br>
   `sudo apt install rustc cargo`<br>
