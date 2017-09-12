@@ -72,7 +72,7 @@
   fi
 
 # CPU Sampling Constant
-samplerate=0.1 # seconds (100ms for initial testing)
+samplerate=0.100 # seconds (100ms for initial testing)
 
 
 # MAIN LOOP
