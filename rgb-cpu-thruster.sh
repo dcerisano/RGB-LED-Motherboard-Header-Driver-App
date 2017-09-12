@@ -24,7 +24,7 @@
 #
 #   sudo ./rgb-cpu-thruster.sh &
 #
-#   CPU stress test: https://jsfiddle.net/0b2yh78j/43/
+#   CPU stress test: https://jsfiddle.net/dcerisano/0b2yh78j/48/
 #
 # To run as auto-starting system service:
 #
