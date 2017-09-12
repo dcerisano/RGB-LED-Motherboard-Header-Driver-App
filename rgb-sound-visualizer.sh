@@ -40,10 +40,10 @@
 #   systemctl --user start  rgb-sound-visualizer
 #
 # To stop user service:
-#   systemctl stop rgb-sound-visualizer
+#   systemctl --user stop rgb-sound-visualizer
 #
 # To disable user service:
-#   systemctl disable rgb-sound-visualizer
+#   systemctl --user disable rgb-sound-visualizer
 #
 #
 ###############################################################################
