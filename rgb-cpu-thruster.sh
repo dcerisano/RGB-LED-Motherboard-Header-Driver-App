@@ -70,11 +70,15 @@
       rgb_driver="/usr/local/bin/msi-rgb"
   fi
 
+
+# CPU Constant
+samplerate=0.1 # seconds (100 ms)
+
 # MAIN LOOP
   while :
   do
     # Sample total CPU load percentage every 100ms (returns a floating point percentage)
-    cpu=$(cat <(grep 'cpu ' /proc/stat) <(sleep 0.1 && grep 'cpu ' /proc/stat) | awk -v RS="" '{print (($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5))/6.5}' )
+    cpu=$(cat <(grep 'cpu ' /proc/stat) <(sleep $samplerate && grep 'cpu ' /proc/stat) | awk -v RS="" '{print (($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5))/6.5}' )
  
     # Convert float to one of 16 RGB hex brightness levels (0-F)
     int=${cpu%.*}
