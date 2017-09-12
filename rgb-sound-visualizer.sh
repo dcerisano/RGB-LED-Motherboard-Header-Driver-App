@@ -74,7 +74,6 @@
 # which are converted to one of 16 RGB hex levels.
 
   (arecord -c 2 -d 0 -f S16_LE -r $samplerate --period-size $periodsize -vvv) 2>&1 >/dev/null |
-
   while read line
   do
     # Look for max peak percentages
