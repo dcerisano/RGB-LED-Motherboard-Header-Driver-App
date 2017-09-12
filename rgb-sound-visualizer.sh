@@ -47,8 +47,8 @@
 # Test loop: https://soundcloud.com/nebogeo/midimutant-evolved-test-tones
 #
 ###############################################################################
-
-
+# Graceful exit: turn off RGB effect.
+  trap 'USER=root; $rgb_driver 0 0 0 -p; exit 1' SIGINT SIGTERM EXIT
 
 # Visualizer Constants
   samplerate=2000 # Larger value increases sensitivity and CPU load.
@@ -57,18 +57,16 @@
   g=00000000      # GREEN
   b=00000000      # BLUE
   d=4             # DELAY (ms)
-  
-# Graceful exit: turn off RGB effect.
-  trap 'USER=root; $rgb_driver 0 0 0 -p; exit 1' SIGINT SIGTERM EXIT
+  rgb_driver="./target/release/msi-rgb"  
 
 # Check if running as user service
-  rgb_driver="./target/release/msi-rgb"
   if [ "`systemctl --user is-active rgb-sound-visualizer`" = "active" ] 
     then
       echo ALERT: rgb-sound-visualizer user service is active
       rgb_driver="/usr/local/bin/msi-rgb"
   fi
 
+# MAIN LOOP
 # This command outputs an endless stream of max peak volume levels to stderr 
 # which are converted to RGB.
 
