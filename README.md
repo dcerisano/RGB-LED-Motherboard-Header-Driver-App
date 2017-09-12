@@ -1,3 +1,4 @@
+![](http://standard3d.com/assets/img/jled1.jpg)<br>
 <b>Goals: RGB ALL The Things!</b>
 
 - <b>ALL the effects:</b> <i>RGB Sync App for creating synchronized effects (CPU, audio/video, network ..)</i>
