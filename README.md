@@ -34,13 +34,13 @@
   `rgb-sound-visualizer.sh`<br><br>
 
 <b>FAQ</b><br><br>
-Q: Why does this not work on my OS/motherboard?<br>
+<i>Q: Why does this not work on my OS/motherboard?</i><br>
 A: Contribute to [github.com/nagisa/msi-rgb](https://github.com/nagisa/msi-rgb) to cover more distro/mobo combos.<br><br>
-Q: Do these effects have any system overhead?<br>
+<i>Q: Do these effects have any system overhead?</i><br>
 A: Very little - around 1% of a single CPU thread at medium sampling.<br><br>
-Q: Can I run ALL the effects at the same time?<br>
+<i>Q: Can I run ALL the effects at the same time?</i><br>
 A: Yes, but that will increase CPU usage accordingly.<br><br>
-Q: Can I create my own effects?<br>
+<i>Q: Can I create my own effects?</i><br>
 A: Yes - hack away at the scripts. Hacking the RGB driver is not recommended for beginners.<br><br>
-Q: Might the RGB Sync App be available soon?<br>
+<i>Q: Might the RGB Sync App be available soon?</i><br>
 A: Yes, it certainly might be.
