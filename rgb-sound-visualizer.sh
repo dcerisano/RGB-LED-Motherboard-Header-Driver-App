@@ -50,13 +50,16 @@
 # Graceful exit: turn off RGB effect.
   trap 'USER=root; $rgb_driver 0 0 0 -p; exit 1' SIGINT SIGTERM EXIT
 
-# Visualizer Constants
+# Sound Constants
   samplerate=2000 # Larger value increases sensitivity and CPU load.
   periodsize=100  # Smaller value increases sensitivity and CPU load.
-  r=00000000      # RED
-  g=00000000      # GREEN
-  b=00000000      # BLUE
-  d=4             # DELAY (ms)
+
+# RGB Header Constants
+  r=00000000      # Default given here is an afterburner spectrum (amber to blue)
+  g=00000000      # Note that the bytes are little endian, so: 
+  b=00000000      # Expected curve of 12345678 must be set as 21436587
+  d=4             # Tweening delay
+  
   rgb_driver="./target/release/msi-rgb"  
 
 # Check if running as user service

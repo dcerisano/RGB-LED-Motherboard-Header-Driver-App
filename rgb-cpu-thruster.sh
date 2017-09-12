@@ -45,22 +45,22 @@
 # Graceful exit: turn off RGB effect.
   trap '$rgb_driver 0 0 0 -p; echo 0 > /sys/class/hwmon/$fan; exit 1' SIGINT SIGTERM EXIT
 
-# FAN CONSTANTS
-# The CASE fan you selected during pwmconfig - NOT the CPU fan!
-  fan=hwmon0/pwm3 
-  pwm_step=12
-  pwm_min=85
-  
 # Bounce fancontrol with reliable PWM driver as of 10/2017
   sudo systemctl stop fancontrol
   sudo /sbin/modprobe nct6775 force_id=0xd120
   sudo systemctl start fancontrol
 
-# RGB CONSTANTS
-  r=dcffdebc
-  g=11221111
-  b=00000000
-  d=4
+# Fan Constants
+  fan=hwmon0/pwm3 # Set the CASE fan you selected during pwmconfig - NOT the CPU fan!
+  pwm_min=85      # Minimum fan level
+  pwm_step=12     # (16 cpu levels)*pwm_step+pwm_min = 255 (maximum fan level)
+
+# RGB Header Constants
+  r=dcffdebc  # Default given here is an afterburner spectrum (amber to blue)
+  g=11221111  # Note that the bytes are little endian, so:
+  b=00000000  # Expected curve of 12345678 must be set as 21436587
+  d=4         # Tweening delay
+  
   rgb_driver="./target/release/msi-rgb"
     
 # Check if running as service
@@ -79,12 +79,8 @@
     # Convert float to  RGB hex brightness levels (0-F)
     int=${cpu%.*}
     c=$(printf '%x\n' $int)
-    b=$c$c$c$c$c$c$c$c
     
-    # Set msi-rgb animation arrays
-    # Default given here is an afterburner spectrum (amber to blue)
-    # Note that the bytes are little endian, so:
-    # Expected curve of 12345678 must be set as 21436587
+    b=$c$c$c$c$c$c$c$c
     
     $rgb_driver $r $g $b -d $d
   
