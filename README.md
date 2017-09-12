@@ -8,7 +8,7 @@
 <b>The following RGB effects are available:</b>
 
 - <i>Currently only for distros and mobos supported by</i> [github.com/nagisa/msi-rgb](https://github.com/nagisa/msi-rgb)<br>
-- <i>Requires good understanding of shell scripting.</i><br>
+- <i>Assumes understanding of underlying technologies (see LICENSE).</i><br>
 <br>
 
 
