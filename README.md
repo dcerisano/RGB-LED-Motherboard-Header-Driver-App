@@ -38,10 +38,10 @@
 <i>Q: Why does this not work on my OS/motherboard?</i><br>
 A: Contribute to [github.com/nagisa/msi-rgb](https://github.com/nagisa/msi-rgb) to cover more distro/mobo combos.<br><br>
 <i>Q: Do these effects have any system overhead?</i><br>
-A: Very little - around 1% of a single CPU thread at medium sampling.<br><br>
+A: Yes - around 1% of a single CPU thread at medium sampling.<br><br>
 <i>Q: Can I run ALL the effects at the same time?</i><br>
-A: Yes, but that will increase CPU usage accordingly.<br><br>
+A: Yes - but that will increase CPU usage accordingly.<br><br>
 <i>Q: Can I create my own effects?</i><br>
 A: Yes - hack away at the scripts. Hacking the RGB driver is not recommended for beginners.<br><br>
 <i>Q: Might the RGB Sync App be available soon?</i><br>
-A: Yes, it certainly might be.
+A: Yes - it certainly might be.
