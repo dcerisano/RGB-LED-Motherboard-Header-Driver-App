@@ -21,6 +21,7 @@
 # To test from your git repo: 
 #
 #   ./rgb-sound-visualizer.sh &
+#   Loop this to test: https://soundcloud.com/nebogeo/midimutant-evolved-test-tones
 #
 # To run as auto-starting user service (your system must support modern systemctl):
 #   
@@ -43,6 +44,7 @@
 #   Capture from Monitor of HD Audio, or:
 #   Capture from Microphone
 # Adjust volume levels to desired sensitivity (also important).
+#
 ###############################################################################
 
 

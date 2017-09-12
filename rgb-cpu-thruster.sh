@@ -3,7 +3,7 @@
 #
 # RGB CPU THRUSTER
 #
-#   Real-time CPU load monitor with RGB & FANSYNC thruster effect
+#   CPU load monitor with synchronized RGB & fan effect
 #   D. Cerisano September 4, 2017
 #   Follow msi-rgb build instructions in README
 #
