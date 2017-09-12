@@ -71,7 +71,7 @@
       rgb_driver="/usr/local/bin/msi-rgb"
   fi
 
-# CPU Constant
+# CPU Sampling Constant
 samplerate=0.1 # seconds (100ms for initial testing)
 
 
