@@ -1,11 +1,11 @@
 <b>Goals: RGB ALL The Things!</b>
 
-- <b>ALL the effects:</b> <i>RGB Sync App for creating effects (CPU, audio/video, network ..)</i>
+- <b>ALL the effects:</b> <i>RGB Sync App for creating synchronized effects (CPU, audio/video, network ..)</i>
 - <b>ALL the platforms:</b> <i>Cross distro (OSX, Linux, Windows ..)</i>
 - <b>ALL the motherboards:</b> <i>Cross mobo (Asus, ASRock, MSI ..)</i>
 <br>
 
-<b>The following RGB effects are available:</b>
+<b>The following synchronized RGB effects are available:</b>
 
 - <i>Currently only for distros and mobos supported by</i> [github.com/nagisa/msi-rgb](https://github.com/nagisa/msi-rgb)<br>
 - <i>Assumes understanding of underlying technologies (see LICENSE).</i><br>
