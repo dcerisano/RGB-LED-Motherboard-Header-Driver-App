@@ -88,7 +88,7 @@
       int=${line%.*};
       s=$(printf '%x\n' $int);
   
-      # Default Grayscale - boooring :)
+      # Constant grayscale effect is best for initial testing - then tweak away!
       r=$s$s$s$s$s$s$s$s
       g=$s$s$s$s$s$s$s$s 
       b=$s$s$s$s$s$s$s$s
