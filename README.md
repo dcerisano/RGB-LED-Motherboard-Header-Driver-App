@@ -1,4 +1,4 @@
-<b>Goals: RGB all things!</b>
+<b>Goals: RGB All The Things!</b>
 
 - <b><i>All the effects:</i></b> RGB Sync App for creating effects (CPU, audio/video, network ..)
 - <b><i>All the platforms:</i></b> Cross distro (OSX, Linux, Windows ..)
