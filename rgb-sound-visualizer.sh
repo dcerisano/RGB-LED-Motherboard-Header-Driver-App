@@ -54,7 +54,7 @@
   samplerate=2000 # Larger value increases sensitivity and CPU load.
   periodsize=100  # Smaller value increases sensitivity and CPU load.
 
-# RGB Header Constants  (loop of 8 rgb settings with configurable delay)
+# RGB Header Constants (loop of 8 rgb settings with configurable delay)
   r=00000000      # Default given here is an afterburner spectrum (amber to blue)
   g=00000000      # Note that the bytes are little endian, so: 
   b=00000000      # Expected curve of cdffedcb must be set as dcffdebc
