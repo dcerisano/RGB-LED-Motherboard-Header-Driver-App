@@ -66,7 +66,7 @@
       rgb_driver="/usr/local/bin/msi-rgb"
   fi
 
-# Bounce fancontrol with reliable driver as of 10/2017
+# Bounce fancontrol with reliable PWM driver as of 10/2017
   sudo systemctl stop fancontrol
   sudo /sbin/modprobe nct6775 force_id=0xd120
   sudo systemctl start fancontrol
