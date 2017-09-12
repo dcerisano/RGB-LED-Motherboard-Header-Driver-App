@@ -24,6 +24,8 @@
 #
 #   sudo ./rgb-cpu-thruster.sh &
 #
+#   CPU stress test: https://jsfiddle.net/0b2yh78j/43/
+#
 # To run as auto-starting system service:
 #
 #   sudo cp ./rgb-cpu-thruster.service /etc/systemd/system
@@ -37,8 +39,6 @@
 #
 # To disable system service:
 #   sudo systemctl disable rgb-cpu-thruster
-#
-# CPU stress test: https://jsfiddle.net/0b2yh78j/43/
 #
 ###############################################################################
 

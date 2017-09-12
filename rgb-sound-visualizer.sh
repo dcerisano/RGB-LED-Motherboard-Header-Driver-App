@@ -22,6 +22,14 @@
 #
 #   ./rgb-sound-visualizer.sh
 #
+#   IMPORTANT - CHOOSE AUDIO SOURCE (Music or Microphone)
+#   Using the mixer on your volume control (while visualizer is running)
+#   Go to the Recording tab and choose:
+#     Capture from Monitor of HD Audio, or:
+#     Capture from Microphone
+#   Adjust volume levels to desired sensitivity (also important).
+#   Test loop: https://soundcloud.com/nebogeo/midimutant-evolved-test-tones
+#
 # To run as auto-starting user service (your system must support modern systemctl):
 #   
 #   sudo cp ./rgb-sound-visualizer.service /etc/systemd/user
@@ -37,14 +45,6 @@
 # To disable user service:
 #   systemctl disable rgb-sound-visualizer
 #
-# IMPORTANT - CHOOSE AUDIO SOURCE (Music or Microphone)
-# Using the mixer on your volume control (while visualizer is running)
-# Go to the Recording tab and choose:
-#   Capture from Monitor of HD Audio, or:
-#   Capture from Microphone
-# Adjust volume levels to desired sensitivity (also important).
-#
-# Test loop: https://soundcloud.com/nebogeo/midimutant-evolved-test-tones
 #
 ###############################################################################
 # Graceful exit: turn off RGB effect.
