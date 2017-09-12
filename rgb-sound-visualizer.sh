@@ -58,7 +58,7 @@
   r=00000000      # Default given here is an afterburner spectrum (amber to blue)
   g=00000000      # Note that the bytes are little endian, so: 
   b=00000000      # Expected curve of cdffedcb must be set as dcffdebc
-  d=4             # Delay
+  d=4             # Delay (~ms*10) - note this loop is performed by SIO, not CPU
   
   rgb_driver="./target/release/msi-rgb"  
 
