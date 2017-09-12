@@ -1,7 +1,7 @@
 #!/bin/bash
 ###############################################################################
 #
-# RGB CPU THRUSTER
+# RGB SOUND VISUALIZER
 #
 #   Real-time sound volume meter for msi-rgb
 #   D. Cerisano September 4, 2017
