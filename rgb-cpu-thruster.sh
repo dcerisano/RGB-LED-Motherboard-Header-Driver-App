@@ -76,7 +76,7 @@
     # Sample total CPU load percentage every 100ms (returns a floating point percentage)
     cpu=$(cat <(grep 'cpu ' /proc/stat) <(sleep 0.1 && grep 'cpu ' /proc/stat) | awk -v RS="" '{print (($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5))/6.5}' )
  
-    # Convert float to  RGB hex brightness levels (0-F)
+    # Convert float to one of 16 RGB hex brightness levels (0-F)
     int=${cpu%.*}
     c=$(printf '%x\n' $int)
     

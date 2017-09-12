@@ -71,7 +71,7 @@
 
 # MAIN LOOP
 # This command outputs an endless stream of max peak volume levels to stderr 
-# which are converted to RGB.
+# which are converted to one of 16 RGB hex levels.
 
   (arecord -c 2 -d 0 -f S16_LE -r $samplerate --period-size $periodsize -vvv) 2>&1 >/dev/null |
 
@@ -88,7 +88,7 @@
       int=${line%.*};
       s=$(printf '%x\n' $int);
   
-      # White visualization
+      # Default Grayscale - boooring :)
       r=$s$s$s$s$s$s$s$s
       g=$s$s$s$s$s$s$s$s 
       b=$s$s$s$s$s$s$s$s
