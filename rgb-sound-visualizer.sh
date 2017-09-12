@@ -59,7 +59,7 @@
   rgb_driver="./target/release/msi-rgb"
   if [ "`systemctl --user is-active rgb-sound-visualizer`" = "active" ] 
     then
-      echo ALERT: rgb-sound-visualizer service is active
+      echo ALERT: rgb-sound-visualizer user service is active
       rgb_driver="/usr/local/bin/msi-rgb"
   fi
 

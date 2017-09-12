@@ -59,10 +59,10 @@
 
 # Check if running as service
   rgb_driver="./target/release/msi-rgb"
-  echo "`systemctl is-active rgb-cpu-thruster`" HEY!!
+
   if [ "`systemctl is-active rgb-cpu-thruster`" = "active" ] 
     then
-      echo ALERT: rgb-cpu-thruster service is active
+      echo ALERT: rgb-cpu-thruster system service is active
       rgb_driver="/usr/local/bin/msi-rgb"
   fi
 
