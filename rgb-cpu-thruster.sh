@@ -42,37 +42,35 @@
 #
 ###############################################################################
 
-
-
-# RGB CONSTANTS
-  r=dcffdebc
-  g=11221111
-  b=00000000
-  d=4
+# Graceful exit: turn off RGB effect.
+  trap '$rgb_driver 0 0 0 -p; echo 0 > /sys/class/hwmon/$fan; exit 1' SIGINT SIGTERM EXIT
 
 # FAN CONSTANTS
 # The CASE fan you selected during pwmconfig - NOT the CPU fan!
   fan=hwmon0/pwm3 
   pwm_step=12
   pwm_min=85
+  
+# Bounce fancontrol with reliable PWM driver as of 10/2017
+  sudo systemctl stop fancontrol
+  sudo /sbin/modprobe nct6775 force_id=0xd120
+  sudo systemctl start fancontrol
 
-# Graceful exit: turn off RGB effect.
-  trap '$rgb_driver 0 0 0 -p; echo 0 > /sys/class/hwmon/$fan; exit 1' SIGINT SIGTERM EXIT
-
-# Check if running as service
+# RGB CONSTANTS
+  r=dcffdebc
+  g=11221111
+  b=00000000
+  d=4
   rgb_driver="./target/release/msi-rgb"
-
+    
+# Check if running as service
   if [ "`systemctl is-active rgb-cpu-thruster`" = "active" ] 
     then
       echo ALERT: rgb-cpu-thruster system service is active
       rgb_driver="/usr/local/bin/msi-rgb"
   fi
 
-# Bounce fancontrol with reliable PWM driver as of 10/2017
-  sudo systemctl stop fancontrol
-  sudo /sbin/modprobe nct6775 force_id=0xd120
-  sudo systemctl start fancontrol
-
+# MAIN LOOP
   while :
   do
     # Sample total CPU load percentage every 100ms (returns a floating point percentage)
