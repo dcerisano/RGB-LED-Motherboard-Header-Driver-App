@@ -72,7 +72,7 @@
 
 
 # CPU Constant
-samplerate=0.1 # seconds (100 ms)
+samplerate=0.1 # seconds (100ms for initial testing)
 
 # MAIN LOOP
   while :
