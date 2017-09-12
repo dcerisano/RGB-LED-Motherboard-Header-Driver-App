@@ -42,6 +42,7 @@
 #
 ###############################################################################
 
+
 # Graceful exit: turn off RGB effect.
   trap '$rgb_driver 0 0 0 -p; echo 0 > /sys/class/hwmon/$fan; exit 1' SIGINT SIGTERM EXIT
 
