@@ -1,8 +1,8 @@
 <b>Goals: RGB All The Things!</b>
 
-- <b><i>All the effects:</i></b> RGB Sync App for creating effects (CPU, audio/video, network ..)
-- <b><i>All the platforms:</i></b> Cross distro (OSX, Linux, Windows ..)
-- <b><i>All the motherboards:</i></b> Cross mobo (Asus, ASRock, MSI ..)
+- <b>All the effects</b> <i>RGB Sync App for creating effects (CPU, audio/video, network ..)</i>
+- <b>All the platforms</b> <i>Cross distro (OSX, Linux, Windows ..)</i>
+- <b>All the motherboards</b> <i>Cross mobo (Asus, ASRock, MSI ..)</i>
 <br>
 
 <b>The following RGB effects are available:</b>
