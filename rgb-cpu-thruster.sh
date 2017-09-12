@@ -55,7 +55,7 @@
   pwm_min=85      # Minimum fan level
   pwm_step=12     # (16 cpu levels)*pwm_step+pwm_min = 255 (maximum fan level)
 
-# RGB Header Constants (loop of 8 rgb settings with configurable delay)
+# RGB Super I/O Header Constants (loop of 8 rgb settings with configurable delay)
   r=dcffdebc  # Default given here is an afterburner spectrum (amber at min to blue at max)
   g=11221111  # Note that the bytes are little endian, so:
   b=00000000  # Expected curve of cdffedcb must be set as dcffdebc
