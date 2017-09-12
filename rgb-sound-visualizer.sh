@@ -47,6 +47,8 @@
 #
 #
 ###############################################################################
+
+
 # Graceful exit: turn off RGB effect.
   trap 'USER=root; $rgb_driver 0 0 0 -p; exit 1' SIGINT SIGTERM EXIT
 
