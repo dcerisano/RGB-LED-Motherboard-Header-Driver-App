@@ -42,7 +42,7 @@
 # Go to the Recording tab and choose:
 #   Capture from Monitor of HD Audio, or:
 #   Capture from Microphone
-# Adjust input and output levels to desired sensitivity (important).
+# Adjust input and output levels to desired sensitivity (also important).
 
 # Visualizer Constants
   samplerate=2000 # Larger value increases sensitivity and CPU load.
