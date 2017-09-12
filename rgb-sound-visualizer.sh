@@ -44,6 +44,8 @@
 #   Capture from Microphone
 # Adjust volume levels to desired sensitivity (also important).
 
+
+
 # Visualizer Constants
   samplerate=2000 # Larger value increases sensitivity and CPU load.
   periodsize=100  # Smaller value increases sensitivity and CPU load.

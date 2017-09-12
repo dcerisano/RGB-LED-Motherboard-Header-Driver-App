@@ -23,6 +23,7 @@
 # To test from your git repo:
 #
 #   sudo ./rgb-cpu-thruster.sh &
+#   CPU stress test: https://jsfiddle.net/0b2yh78j/43/
 #
 # To run as auto-starting system service:
 #
