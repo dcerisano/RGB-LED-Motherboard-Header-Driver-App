@@ -13,7 +13,7 @@
 #   fancontrol
 #     sudo apt install lm-sensors fancontrol
 #     sudo /sbin/modprobe nct6775 force_id=0xd120
-#     sudo pwmconfig (choose any CASE fan,  eg. hwmon0/pwm3)
+#     sudo pwmconfig (use defaults and choose any CASE fan,  eg. hwmon0/pwm3)
 #
 # To build RGB driver:
 #
