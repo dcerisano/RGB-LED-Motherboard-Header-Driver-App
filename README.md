@@ -36,7 +36,7 @@
 
 <b>FAQ</b><br><br>
 <i>Q: Why does this not work on my OS/motherboard?</i><br>
-A: Try running your Windows 10 RGB software once after a power up - this can activate RGB headers.<br>
+A: Try running your Windows 10 RGB software once after a power up - this may activate RGB headers.<br>
 A: Contribute to [github.com/nagisa/msi-rgb](https://github.com/nagisa/msi-rgb) to cover more distro/mobo combos.<br><br>
 <i>Q: Do these effects have any system overhead?</i><br>
 A: Yes - around 1% of a single CPU thread at medium sampling.<br><br>
