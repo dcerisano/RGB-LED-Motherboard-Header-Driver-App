@@ -1,4 +1,4 @@
-sudo apt install rustc cargo make xsensors lm-sensors fancontrol
+sudo apt install rustc cargo make xsensors lm-sensors fancontrol stress
 
 sudo sensors-detect
 sudo pwmconfig
