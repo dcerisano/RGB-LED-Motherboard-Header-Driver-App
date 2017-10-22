@@ -1,4 +1,4 @@
-sudo apt install rustc cargo make
+sudo apt install rustc cargo make lm-sensors fancontrol
 cargo build --release
 
 sudo cp         ./rgb-cpu-thruster.service   /etc/systemd/system

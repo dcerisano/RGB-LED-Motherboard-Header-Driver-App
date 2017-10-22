@@ -83,15 +83,20 @@ samplerate=0.100 # seconds (100ms for initial testing)
  
     # Convert float to one of 16 RGB hex brightness levels (0-F)
     int=${cpu%.*}
-    c=$(printf '%x\n' $int)
     
-    b=$c$c$c$c$c$c$c$c
+    c=$(printf '%x\n' $int) 
     
-    $rgb_driver $r $g $b -d $d
-  
-    # Sync fan to CPU load
     if [ "`systemctl is-active fancontrol`" = "active" ] 
       then
         echo $((0x$c*pwm_step+pwm_min)) > /sys/class/hwmon/$fan
     fi
+    
+    b=$c$c$c$c$c$c$c$c
+    
+        # Sync fan to CPU load
+
+    
+    $rgb_driver $r $g $b -d $d
+  
+
   done
