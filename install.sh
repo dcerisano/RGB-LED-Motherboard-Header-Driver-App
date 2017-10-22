@@ -1,4 +1,4 @@
-sudo apt install rustc cargo
+sudo apt install rustc cargo make
 cargo build --release
 
 sudo cp ./rgb-cpu-thruster.service /etc/systemd/system
