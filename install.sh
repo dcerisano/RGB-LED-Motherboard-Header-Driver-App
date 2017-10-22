@@ -13,3 +13,4 @@ sudo systemctl start  rgb-cpu-thruster
 
 # systemctl --user enable rgb-sound-visualizer
 # systemctl --user start  rgb-sound-visualizer
+
