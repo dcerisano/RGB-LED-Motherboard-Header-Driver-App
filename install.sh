@@ -1,5 +1,5 @@
 sudo apt install rustc cargo
-cargo --cargo build --release
+cargo build --release
 
 sudo cp ./rgb-cpu-thruster.service /etc/systemd/system
 sudo chown root /target/release/msi-rgb
