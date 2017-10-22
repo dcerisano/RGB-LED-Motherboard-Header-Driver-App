@@ -51,8 +51,8 @@
   sudo /sbin/modprobe nct6775 force_id=0xd120
   sudo systemctl start fancontrol
 
-# Fan Constants
-  fan=hwmon0/pwm3 # Set the CASE fan you selected during pwmconfig - NOT the CPU fan!
+# Fan Constants. Select a fan from /etc/fancontrol after running pwmconfig (do not select the CPU fan!)
+  fan=/sys/class/hwmon/hwmon0/pwm3 
   pwm_min=85      # Minimum fan level
   pwm_step=12     # (16 cpu levels)*pwm_step+pwm_min = 255 (maximum fan level)
 
@@ -88,7 +88,7 @@ samplerate=0.100 # seconds (100ms for initial testing)
     
     if [ "`systemctl is-active fancontrol`" = "active" ] 
       then
-        echo $((0x$c*pwm_step+pwm_min)) > /sys/class/hwmon/$fan
+        echo $((0x$c*pwm_step+pwm_min)) > $fan
     fi
     
     b=$c$c$c$c$c$c$c$c
