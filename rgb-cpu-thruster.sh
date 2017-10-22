@@ -43,7 +43,7 @@
 ###############################################################################
 
 
-# Graceful exit: turn off RGB effect.
+# Graceful exit: turn off RGB effect and restore fancontrol.
   trap '$rgb_driver 0 0 0 -p; echo 0 > $fan; exit 1' SIGINT SIGTERM EXIT
 
 # Bounce fancontrol with reliable PWM driver as of 10/2017
