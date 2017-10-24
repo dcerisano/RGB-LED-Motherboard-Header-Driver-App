@@ -5,5 +5,5 @@ Description= RGB Sound Visualizer
 WantedBy=default.target
 
 [Service]
-ExecStart=/usr/local/bin/rgb-sound-visualizer.sh
+ExecStart=/usr/local/bin/rgb-sound.sh
 

@@ -1,9 +1,9 @@
 [Unit]
-Description= RGB CPU Thruster
+Description= RGB CPU Visualizer
 After=fancontrol.service
 
 [Service]
-ExecStart=/usr/local/bin/rgb-cpu-thruster.sh
+ExecStart=/usr/local/bin/rgb-cpu.sh
 
 [Install]
 WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+[Unit]
+Description= RGB Network Visualizer
+
+[Install]
+WantedBy=default.target
+
+[Service]
+ExecStart=/usr/local/bin/rgb-net.sh
+
