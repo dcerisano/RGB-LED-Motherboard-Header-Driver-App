@@ -47,9 +47,9 @@
   trap '$rgb_driver 0 0 0 -p; echo 0 > $fan; exit 1' SIGINT SIGTERM EXIT
 
 # Bounce fancontrol with reliable PWM driver as of 10/2017
-  sudo systemctl stop fancontrol
-  sudo /sbin/modprobe nct6775 force_id=0xd120
-  sudo systemctl start fancontrol
+#  sudo systemctl stop fancontrol
+#  sudo /sbin/modprobe nct6775 force_id=0xd120
+#  sudo systemctl start fancontrol
 
 # Fan Constants. Select a fan from /etc/fancontrol after running pwmconfig (do not select the CPU fan!)
   fan=/sys/class/hwmon/hwmon0/pwm3 

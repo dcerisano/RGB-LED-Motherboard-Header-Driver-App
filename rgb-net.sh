@@ -80,7 +80,7 @@
   while read line
   do
     echo $line;
-     beep -f 30  -l 1
+    beep -f 30  -l 1
     
     
     if [[ $line == *[%]* ]]
