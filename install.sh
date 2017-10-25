@@ -15,11 +15,14 @@ sudo cp         ./rgb-cpu.sh                 /usr/local/bin
 sudo cp         ./rgb-net.sh                 /usr/local/bin
 sudo cp         ./rgb-sound.sh               /usr/local/bin
        
-sudo systemctl enable rgb-cpu
-sudo systemctl enable rgb-net
-sudo systemctl start  rgb-cpu
-sudo systemctl start  rgb-net
+sudo systemctl disable rgb-cpu
+sudo systemctl disable rgb-net
+sudo systemctl enable  rgb-cpu
+sudo systemctl enable  rgb-net
+sudo systemctl start   rgb-cpu
+sudo systemctl start   rgb-net
 
-# systemctl --user enable rgb-sound-visualizer
-# systemctl --user start  rgb-sound-visualizer
+# systemctl --user disable rgb-sound-visualizer
+# systemctl --user enable  rgb-sound-visualizer
+# systemctl --user start   rgb-sound-visualizer
 
