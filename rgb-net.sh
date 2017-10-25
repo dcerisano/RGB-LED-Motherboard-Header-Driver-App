@@ -76,29 +76,29 @@
 # This command outputs an endless stream of max peak volume levels 
 # which are converted to one of 16 RGB hex levels (0-F)
 
-  tcpdump |
+  tcpdump port 80 |
   while read line
   do
     echo $line;
     beep -f 30  -l 1;
     
     
-    if [[ $line == *[%]* ]]
-    then
-      line=${line: -3};
-      line=${line:0:2};
+#    if [[ $line == *[%]* ]]
+#    then
+#      line=${line: -3};
+#      line=${line:0:2};
       
       # Convert to hex brightness level
-      line=$(echo $line/6.67+1|bc -l);
-      int=${line%.*};
-      s=$(printf '%x\n' $int);
-      echo $s;
+#      line=$(echo $line/6.67+1|bc -l);
+#      int=${line%.*};
+#      s=$(printf '%x\n' $int);
+#      echo $s;
   
-      # Constant grayscale effect is best for initial testing - then tweak away!
-      #r=$s$s$s$s$s$s$s$s
-      #g=$s$s$s$s$s$s$s$s 
-      #b=$s$s$s$s$s$s$s$s
-      #d=0
-      #$rgb_driver $r $g $b -d $d
-    fi
+#       Constant grayscale effect is best for initial testing - then tweak away!
+#      r=$s$s$s$s$s$s$s$s
+#      g=$s$s$s$s$s$s$s$s 
+#      b=$s$s$s$s$s$s$s$s
+#      d=0
+#      $rgb_driver $r $g $b -d $d
+#    fi
   done
