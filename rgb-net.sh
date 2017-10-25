@@ -76,10 +76,12 @@
 # This command outputs an endless stream of max peak volume levels 
 # which are converted to one of 16 RGB hex levels (0-F)
 
-  (arecord -c 2 -d 0 -f S16_LE -r $samplerate --period-size $periodsize -vvv) 2>&1 >/dev/null |
+  tcpdump |
   while read line
   do
     # Look for max peak percentages
+    echo $line;
+    
     if [[ $line == *[%]* ]]
     then
       line=${line: -3};
@@ -89,12 +91,13 @@
       line=$(echo $line/6.67+1|bc -l);
       int=${line%.*};
       s=$(printf '%x\n' $int);
+      echo $s;
   
       # Constant grayscale effect is best for initial testing - then tweak away!
-      r=$s$s$s$s$s$s$s$s
-      g=$s$s$s$s$s$s$s$s 
-      b=$s$s$s$s$s$s$s$s
-      d=0
-      $rgb_driver $r $g $b -d $d
+      #r=$s$s$s$s$s$s$s$s
+      #g=$s$s$s$s$s$s$s$s 
+      #b=$s$s$s$s$s$s$s$s
+      #d=0
+      #$rgb_driver $r $g $b -d $d
     fi
   done
