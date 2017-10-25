@@ -65,9 +65,9 @@
   rgb_driver="./target/release/msi-rgb"  
 
 # Check if running as user service
-  if [ "`systemctl --user is-active rgb-sound-visualizer`" = "active" ] 
+  if [ "`systemctl --user is-active rgb-net`" = "active" ] 
     then
-      echo ALERT: rgb-sound-visualizer user service is active
+      echo ALERT: rgb-net user service is active
       rgb_driver="/usr/local/bin/msi-rgb"
   fi
 
@@ -79,14 +79,15 @@
   tcpdump |
   while read line
   do
-    # Look for max peak percentages
     echo $line;
+     beep -f 30  -l 1
+    
     
     if [[ $line == *[%]* ]]
     then
       line=${line: -3};
       line=${line:0:2};
-    
+      
       # Convert to hex brightness level
       line=$(echo $line/6.67+1|bc -l);
       int=${line%.*};
