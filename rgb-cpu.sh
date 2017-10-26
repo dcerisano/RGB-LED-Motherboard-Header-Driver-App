@@ -52,7 +52,8 @@
 #  sudo systemctl start fancontrol
 
 # Fan Constants. Select a fan from /etc/fancontrol after running pwmconfig (do not select the CPU fan!)
-  fan=/sys/class/hwmon/hwmon0/pwm3 
+#  fan=/sys/class/hwmon/hwmon0/pwm3
+  fan=/sys/class/hwmon/hwmon1/device/pwm1
   pwm_min=85      # Minimum fan level
   pwm_step=12     # (16 cpu levels)*pwm_step+pwm_min = 255 (maximum fan level)
 

@@ -52,17 +52,14 @@
 # Graceful exit: turn off RGB effect.
   trap 'USER=root; $rgb_driver 0 0 0 -p; exit 1' SIGINT SIGTERM EXIT
 
-# Sound Constants
-  samplerate=2000 # Larger value increases sensitivity and CPU load.
-  periodsize=100  # Smaller value increases sensitivity and CPU load.
 
 # RGB Super I/O Header Constants (loop of 8 rgb settings with configurable delay)
-  r=00000000      # Default given here is an afterburner spectrum (amber to blue)
-  g=00000000      # Note that the bytes are little endian, so: 
-  b=00000000      # Expected curve of cdffedcb must be set as dcffdebc
-  d=4             # Delay (~ms*10) - note this loop is performed by SIO, not CPU
+#  r=00000000      # Default given here is an afterburner spectrum (amber to blue)
+#  g=00000000      # Note that the bytes are little endian, so: 
+#  b=00000000      # Expected curve of cdffedcb must be set as dcffdebc
+#  d=4             # Delay (~ms*10) - note this loop is performed by SIO, not CPU
   
-  rgb_driver="./target/release/msi-rgb"  
+#  rgb_driver="./target/release/msi-rgb"  
 
 # Check if running as user service
   if [ "`systemctl --user is-active rgb-net`" = "active" ] 
@@ -72,14 +69,13 @@
   fi
 
 
-# MAIN LOOP
-# This command outputs an endless stream of max peak volume levels 
-# which are converted to one of 16 RGB hex levels (0-F)
+
+sudo modprobe pcspkr;
 
   tcpdump port 80 |
   while read line
   do
-    echo $line;
+
     beep -f 30  -l 1;
     
     
@@ -88,7 +84,7 @@
 #      line=${line: -3};
 #      line=${line:0:2};
       
-      # Convert to hex brightness level
+#    #Convert to hex brightness level
 #      line=$(echo $line/6.67+1|bc -l);
 #      int=${line%.*};
 #      s=$(printf '%x\n' $int);
