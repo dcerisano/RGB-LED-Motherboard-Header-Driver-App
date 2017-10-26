@@ -28,3 +28,4 @@ sudo systemctl start   rgb-net
 # systemctl --user enable  rgb-sound-visualizer
 # systemctl --user start   rgb-sound-visualizer
 
+

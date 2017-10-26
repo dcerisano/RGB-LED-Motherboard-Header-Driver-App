@@ -69,14 +69,11 @@
   fi
 
 
-
-sudo modprobe pcspkr;
-
-  tcpdump port 80 |
+  tail -F /var/log/apache2/access.log |
   while read line
   do
 
-    beep -f 30  -l 1;
+     aplay /usr/local/share/Uss_KelvinEDIT.wav &
     
     
 #    if [[ $line == *[%]* ]]
@@ -84,17 +81,18 @@ sudo modprobe pcspkr;
 #      line=${line: -3};
 #      line=${line:0:2};
       
-#    #Convert to hex brightness level
+#      # Convert to hex brightness level
 #      line=$(echo $line/6.67+1|bc -l);
 #      int=${line%.*};
+
 #      s=$(printf '%x\n' $int);
 #      echo $s;
   
-#       Constant grayscale effect is best for initial testing - then tweak away!
-#      r=$s$s$s$s$s$s$s$s
-#      g=$s$s$s$s$s$s$s$s 
-#      b=$s$s$s$s$s$s$s$s
-#      d=0
-#      $rgb_driver $r $g $b -d $d
+      # Constant grayscale effect is best for initial testing - then tweak away!
+      #r=$s$s$s$s$s$s$s$s
+      #g=$s$s$s$s$s$s$s$s 
+      #b=$s$s$s$s$s$s$s$s
+      #d=0
+      #$rgb_driver $r $g $b -d $d
 #    fi
   done
