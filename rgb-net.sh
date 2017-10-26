@@ -80,12 +80,12 @@
   while read line
   do   
      if [[ $line == *[vrip360]* ]]
-        aplay /usr/local/share/Uss_KelvinEDIT.wav &
+        aplay /usr/local/share/vrip360.wav &
     
      fi
      
      if [[ $line == *[standard3d]* ]]
-        aplay /usr/local/share/Uss_KelvinEDIT.wav &
+        aplay /usr/local/share/standard3d.wav &
     
      fi
      
