@@ -15,7 +15,7 @@ sudo cp         ./target/release/msi-rgb     /usr/local/bin
 sudo cp         ./rgb-cpu.sh                 /usr/local/bin
 sudo cp         ./rgb-net.sh                 /usr/local/bin
 sudo cp         ./rgb-sound.sh               /usr/local/bin
-sudo cp         ./Uss_KelvinEDIT.mp3         /usr/local/share
+sudo cp         ./Uss_KelvinEDIT.wav         /usr/local/share
        
 sudo systemctl disable rgb-cpu
 sudo systemctl disable rgb-net
