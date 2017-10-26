@@ -17,15 +17,19 @@ sudo cp         ./rgb-net.sh                 /usr/local/bin
 sudo cp         ./rgb-sound.sh               /usr/local/bin
 sudo cp         ./Uss_KelvinEDIT.wav         /usr/local/share
        
+sudo systemctl stop    rgb-cpu
 sudo systemctl disable rgb-cpu
-sudo systemctl disable rgb-net
 sudo systemctl enable  rgb-cpu
-sudo systemctl enable  rgb-net
 sudo systemctl start   rgb-cpu
+
+sudo systemctl stop    rgb-net
+sudo systemctl disable rgb-net
+sudo systemctl enable  rgb-net
 sudo systemctl start   rgb-net
 
-# systemctl --user disable rgb-sound-visualizer
-# systemctl --user enable  rgb-sound-visualizer
-# systemctl --user start   rgb-sound-visualizer
+# systemctl --user stop    rgb-sound
+# systemctl --user disable rgb-sound
+# systemctl --user enable  rgb-sound
+# systemctl --user start   rgb-sound
 
 

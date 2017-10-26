@@ -52,6 +52,9 @@
 # Graceful exit: turn off RGB effect.
   trap 'USER=root; $rgb_driver 0 0 0 -p; exit 1' SIGINT SIGTERM EXIT
 
+# Sound Constants
+  samplerate=2000 # Larger value increases sensitivity and CPU load.
+  periodsize=100  # Smaller value increases sensitivity and CPU load.
 
 # RGB Super I/O Header Constants (loop of 8 rgb settings with configurable delay)
 #  r=00000000      # Default given here is an afterburner spectrum (amber to blue)
@@ -62,37 +65,45 @@
 #  rgb_driver="./target/release/msi-rgb"  
 
 # Check if running as user service
-  if [ "`systemctl --user is-active rgb-net`" = "active" ] 
-    then
-      echo ALERT: rgb-net user service is active
-      rgb_driver="/usr/local/bin/msi-rgb"
-  fi
+#  if [ "`systemctl --user is-active rgb-net`" = "active" ] 
+#    then
+#      echo ALERT: rgb-net user service is active
+#      rgb_driver="/usr/local/bin/msi-rgb"
+#  fi
 
+
+# MAIN LOOP
+# This command outputs an endless stream of max peak volume levels 
+# which are converted to one of 16 RGB hex levels (0-F)
 
   tail -F /var/log/apache2/access.log |
   while read line
-  do
-
-     aplay /usr/local/share/Uss_KelvinEDIT.wav &
+  do   
+     if [[ $line == *[vrip360]* ]]
+        aplay /usr/local/share/Uss_KelvinEDIT.wav &
     
+     fi
+     
+     if [[ $line == *[standard3d]* ]]
+        aplay /usr/local/share/Uss_KelvinEDIT.wav &
     
+     fi
+     
 #    if [[ $line == *[%]* ]]
 #    then
 #      line=${line: -3};
 #      line=${line:0:2};
-      
 #      # Convert to hex brightness level
 #      line=$(echo $line/6.67+1|bc -l);
 #      int=${line%.*};
-
 #      s=$(printf '%x\n' $int);
 #      echo $s;
-  
-      # Constant grayscale effect is best for initial testing - then tweak away!
-      #r=$s$s$s$s$s$s$s$s
-      #g=$s$s$s$s$s$s$s$s 
-      #b=$s$s$s$s$s$s$s$s
-      #d=0
-      #$rgb_driver $r $g $b -d $d
+#      # Constant grayscale effect is best for initial testing - then tweak away!
+#      r=$s$s$s$s$s$s$s$s
+#      g=$s$s$s$s$s$s$s$s 
+#      b=$s$s$s$s$s$s$s$s
+#      d=0
+#      $rgb_driver $r $g $b -d $d
 #    fi
   done
+
