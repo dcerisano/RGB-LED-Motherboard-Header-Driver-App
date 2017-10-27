@@ -79,14 +79,12 @@
   tail -F /var/log/apache2/access.log |
   while read line
   do   
-     if [[ $line == *[vrip360]* ]]
+     if [[ $line == *"vrip360"* ]]
         aplay /usr/local/share/vrip360.wav &
-    
      fi
      
-     if [[ $line == *[standard3d]* ]]
+     if [[ $line == *"standard3d"* ]]
         aplay /usr/local/share/standard3d.wav &
-    
      fi
      
 #    if [[ $line == *[%]* ]]
