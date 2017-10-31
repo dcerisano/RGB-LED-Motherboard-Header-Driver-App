@@ -18,7 +18,7 @@
 ![](http://standard3d.com/assets/img/rgb-cpu-thruster.gif)<br><br>
 
 <b>RGB Sound Visualizer</b> <i>(Linux/MSI)</i><br>
-![](http://standard3d.com/assets/img/rgb-sound.gif)<br><br>
+![](http://standard3d.com/assets/img/rgb-sound1.gif)<br><br>
 
 <b>RGB Sync App Design</b> <i>(CPU Thruster shown)</i><br>
 ![](http://standard3d.com/assets/img/rgb-gui-placeholder4.gif)<br><br>
