@@ -52,8 +52,8 @@
 #  sudo systemctl start fancontrol
 
 # Fan Constants. Select a fan from /etc/fancontrol after running pwmconfig (do not select the CPU fan!)
-#  fan=/sys/class/hwmon/hwmon0/pwm3
-  fan=/sys/class/hwmon/hwmon1/device/pwm1
+  fan=/sys/class/hwmon/hwmon0/pwm3
+#  fan=/sys/class/hwmon/hwmon1/device/pwm1
   pwm_min=85      # Minimum fan level
   pwm_step=12     # (16 cpu levels)*pwm_step+pwm_min = 255 (maximum fan level)
 
@@ -96,8 +96,14 @@ samplerate=0.100 # seconds (100ms for initial testing)
     
         # Sync fan to CPU load
 
-    
-    $rgb_driver $r $g $b -d $d
+    blank=$(xset q)
+    if [[ $blank == *"Monitor is On"* ]]  
+      then
+        $rgb_driver $r $g $b -d $d
+      else
+        $rgb_driver 0 0 11111111 -d $d
+    fi
+      
   
 
   done
