@@ -22,23 +22,23 @@
 #
 # To test from your git repo:
 #
-#   sudo ./rgb-cpu-thruster.sh &
+#   sudo ./rgb-cpu.sh &
 #
 #   CPU stress test: https://jsfiddle.net/dcerisano/0b2yh78j/48/
 #
 # To run as auto-starting system service:
 #
-#   sudo cp ./rgb-cpu-thruster.service /etc/systemd/system
+#   sudo cp ./rgb-cpu.service /etc/systemd/system
 #   sudo cp ./target/release/msi-rgb   /usr/local/bin
-#   sudo cp ./rgb-cpu-thruster.sh      /usr/local/bin
-#   sudo systemctl enable rgb-cpu-thruster
-#   sudo systemctl start  rgb-cpu-thruster
+#   sudo cp ./rgb-cpu.sh      /usr/local/bin
+#   sudo systemctl enable rgb-cpu
+#   sudo systemctl start  rgb-cpu
 #   
 # To stop system service:
-#   sudo systemctl stop rgb-cpu-thruster
+#   sudo systemctl stop rgb-cpu
 #
 # To disable system service:
-#   sudo systemctl disable rgb-cpu-thruster
+#   sudo systemctl disable rgb-cpu
 #
 ###############################################################################
 
@@ -47,9 +47,9 @@
   trap '$rgb_driver 0 0 0 -p; echo 0 > $fan; exit 1' SIGINT SIGTERM EXIT
 
 # Bounce fancontrol with reliable PWM driver as of 10/2017
-#  sudo systemctl stop fancontrol
-#  sudo /sbin/modprobe nct6775 force_id=0xd120
-#  sudo systemctl start fancontrol
+  sudo systemctl stop fancontrol
+  sudo /sbin/modprobe nct6775 force_id=0xd120
+  sudo systemctl start fancontrol
 
 # Fan Constants. Select a fan from /etc/fancontrol after running pwmconfig (do not select the CPU fan!)
   fan=/sys/class/hwmon/hwmon0/pwm3
@@ -66,15 +66,19 @@
   rgb_driver="./target/release/msi-rgb"
     
 # Check if running as service
-  if [ "`systemctl is-active rgb-cpu-thruster`" = "active" ] 
+  if [ "`systemctl is-active rgb-cpu`" = "active" ] 
     then
-      echo ALERT: rgb-cpu-thruster system service is active
+      echo ALERT: rgb-cpu system service is active
       rgb_driver="/usr/local/bin/msi-rgb"
   fi
 
 # CPU Sampling Constant
 samplerate=0.100 # seconds (100ms for initial testing)
 
+
+# rgb control only when this user is logged in
+xuser=dcerisano
+export DISPLAY=:0.0
 
 # MAIN LOOP
   while :
@@ -87,6 +91,7 @@ samplerate=0.100 # seconds (100ms for initial testing)
     
     c=$(printf '%x\n' $int) 
     
+    # Sync fan to CPU load
     if [ "`systemctl is-active fancontrol`" = "active" ] 
       then
         echo $((0x$c*pwm_step+pwm_min)) > $fan
@@ -94,16 +99,15 @@ samplerate=0.100 # seconds (100ms for initial testing)
     
     b=$c$c$c$c$c$c$c$c
     
-        # Sync fan to CPU load
-
-    blank=$(xset q)
+ 
+    # Sync RGB to CPU load and screen power management
+    blank=$(sudo -u $xuser xset q)
     if [[ $blank == *"Monitor is On"* ]]  
       then
-        $rgb_driver $r $g $b -d $d
+        $rgb_driver $r $g $b -d $d      # Sync to CPU
       else
-        $rgb_driver 0 0 11111111 -d $d
+        $rgb_driver 0 0 11111111 -d $d  # Sleep mode
     fi
       
-  
-
+ 
   done
