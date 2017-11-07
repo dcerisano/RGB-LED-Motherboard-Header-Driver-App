@@ -76,7 +76,7 @@
 samplerate=0.100 # seconds (100ms for initial testing)
 
 
-# rgb control only when this user is logged in
+# Sleep mode only available when X user is logged in
 xuser=dcerisano
 export DISPLAY=:0.0
 
@@ -102,11 +102,11 @@ export DISPLAY=:0.0
  
     # Sync RGB to CPU load and screen power management
     blank=$(sudo -u $xuser xset q)
-    if [[ $blank == *"Monitor is On"* ]]  
-      then
-        $rgb_driver $r $g $b -d $d      # Sync to CPU
+    if [[ $blank == *"Monitor is Off"* ]]  
+      then 
+        $rgb_driver 0 0 11111111    # Sleep mode
       else
-        $rgb_driver 0 0 11111111 -d $d  # Sleep mode
+        $rgb_driver $r $g $b -d $d  # Sync to CPU
     fi
       
  
