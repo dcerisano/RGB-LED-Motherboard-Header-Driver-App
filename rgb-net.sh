@@ -78,7 +78,13 @@
 
   tail -F /var/log/apache2/access.log |
   while read line
-  do   
+  do 
+  
+     if [[ $line == *"dummy"* ]]
+        continue;
+     fi
+  
+    
      if [[ $line == *"vrip360"* ]]
         aplay /usr/local/share/vrip360.wav &
      fi
