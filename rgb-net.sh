@@ -84,7 +84,6 @@
         continue;
      fi
   
-    
      if [[ $line == *"vrip360"* ]]
         aplay /usr/local/share/vrip360.wav &
      fi
