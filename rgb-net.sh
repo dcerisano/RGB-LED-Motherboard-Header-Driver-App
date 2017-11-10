@@ -51,14 +51,14 @@
 #  b=00000000      # Expected curve of cdffedcb must be set as dcffdebc
 #  d=4             # Delay (~ms*10) - note this loop is performed by SIO, not CPU
   
-#  rgb_driver="./target/release/msi-rgb"  
+  rgb_driver="./target/release/msi-rgb"  
 
-# Check if running as user service
-#  if [ "`systemctl --user is-active rgb-net`" = "active" ] 
-#    then
-#      echo ALERT: rgb-net user service is active
-#      rgb_driver="/usr/local/bin/msi-rgb"
-#  fi
+#  Check if running as user service
+   if [ "`systemctl --user is-active rgb-net`" = "active" ] 
+     then
+       echo ALERT: rgb-net user service is active
+       rgb_driver="/usr/local/bin/msi-rgb"
+   fi
 
 
 # MAIN LOOP
@@ -68,20 +68,22 @@
   do 
      # skip dummy spawn messages that are tagged with domain names
      if [[ $line == *"dummy"* ]]
-        continue;
+     then
+        continue
      fi
   
      if [[ $line == *"vrip360"* ]]
+     then
         aplay /usr/local/share/vrip360.wav &
         # $rgb_driver 11111111 0 # flash red
      fi
      
      if [[ $line == *"standard3d"* ]]
+     then
         aplay /usr/local/share/standard3d.wav &
         # $rgb_driver 0 11111111 0 # flash green
      fi
      
      # $rgb_driver 0 0 0 # turn down RGB
-
   done
 
