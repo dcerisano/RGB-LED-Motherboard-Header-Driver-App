@@ -20,30 +20,22 @@
 #
 # To test from your git repo: 
 #
-#   ./rgb-sound-visualizer.sh
-#
-#   IMPORTANT - CHOOSE AUDIO SOURCE (Music or Microphone)
-#   Using the mixer on your volume control (while visualizer is running)
-#   Go to the Recording tab and choose:
-#     Capture from Monitor of HD Audio, or:
-#     Capture from Microphone
-#   Adjust volume levels to desired sensitivity (also important).
-#   Test loop: https://soundcloud.com/nebogeo/midimutant-evolved-test-tones
+#   ./rgb-net.sh
 #
 # To run as auto-starting user service (your system must support modern systemctl):
 #   
-#   sudo cp ./rgb-sound-visualizer.service /etc/systemd/user
-#   sudo cp ./target/release/msi-rgb       /usr/local/bin
-#   sudo cp ./rgb-sound-visualizer.sh      /usr/local/bin
+#   sudo cp ./rgb-net.service          /etc/systemd/user
+#   sudo cp ./target/release/msi-rgb   /usr/local/bin
+#   sudo cp ./rgb-net.sh               /usr/local/bin
 #   sudo chmod u+s /usr/local/bin/msi-rgb
-#   systemctl --user enable rgb-sound-visualizer
-#   systemctl --user start  rgb-sound-visualizer
+#   systemctl --user enable rgb-net
+#   systemctl --user start  rgb-net
 #
 # To stop user service:
-#   systemctl --user stop rgb-sound-visualizer
+#   systemctl --user stop rgb-net
 #
 # To disable user service:
-#   systemctl --user disable rgb-sound-visualizer
+#   systemctl --user disable rgb-net
 #
 #
 ###############################################################################
@@ -52,9 +44,6 @@
 # Graceful exit: turn off RGB effect.
   trap 'USER=root; $rgb_driver 0 0 0 -p; exit 1' SIGINT SIGTERM EXIT
 
-# Sound Constants
-  samplerate=2000 # Larger value increases sensitivity and CPU load.
-  periodsize=100  # Smaller value increases sensitivity and CPU load.
 
 # RGB Super I/O Header Constants (loop of 8 rgb settings with configurable delay)
 #  r=00000000      # Default given here is an afterburner spectrum (amber to blue)
@@ -73,40 +62,26 @@
 
 
 # MAIN LOOP
-# This command outputs an endless stream of max peak volume levels 
-# which are converted to one of 16 RGB hex levels (0-F)
 
   tail -F /var/log/apache2/access.log |
   while read line
   do 
-  
+     # skip dummy spawn messages that are tagged with domain names
      if [[ $line == *"dummy"* ]]
         continue;
      fi
   
      if [[ $line == *"vrip360"* ]]
         aplay /usr/local/share/vrip360.wav &
+        # $rgb_driver 11111111 0 # flash red
      fi
      
      if [[ $line == *"standard3d"* ]]
         aplay /usr/local/share/standard3d.wav &
+        # $rgb_driver 0 11111111 0 # flash green
      fi
      
-#    if [[ $line == *[%]* ]]
-#    then
-#      line=${line: -3};
-#      line=${line:0:2};
-#      # Convert to hex brightness level
-#      line=$(echo $line/6.67+1|bc -l);
-#      int=${line%.*};
-#      s=$(printf '%x\n' $int);
-#      echo $s;
-#      # Constant grayscale effect is best for initial testing - then tweak away!
-#      r=$s$s$s$s$s$s$s$s
-#      g=$s$s$s$s$s$s$s$s 
-#      b=$s$s$s$s$s$s$s$s
-#      d=0
-#      $rgb_driver $r $g $b -d $d
-#    fi
+     # $rgb_driver 0 0 0 # turn down RGB
+
   done
 
