@@ -23,7 +23,7 @@
 
 <b>INSTRUCTIONS</b>
 
-Read the these scripts before running:
+Read these scripts before running:
 - sudo ./init-sensors.sh
 - sudo ./install-rgb.sh
 
