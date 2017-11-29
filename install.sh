@@ -16,26 +16,19 @@ sudo cp ./vrip360.wav         /usr/local/share
 cargo build --release
 sudo cp ./target/release/msi-rgb  /usr/local/bin
 
-# Install RGB services
+# Install and start all RGB services (comment out any you don't want)
 
-sudo cp ./rgb-cpu.service     /etc/systemd/system
-sudo cp ./rgb-net.service     /etc/systemd/system
-sudo cp ./rgb-sound.service   /etc/systemd/system
-sudo cp ./rgb-cpu.sh          /usr/local/bin
-sudo cp ./rgb-net.sh          /usr/local/bin
-sudo cp ./rgb-sound.sh        /usr/local/bin
-
-sudo systemctl stop    rgb-cpu
-sudo systemctl disable rgb-cpu
+sudo cp ./rgb-cpu.service    /etc/systemd/system
+sudo cp ./rgb-cpu.sh         /usr/local/bin
 sudo systemctl enable  rgb-cpu
 sudo systemctl start   rgb-cpu
 
-sudo systemctl stop    rgb-net
-sudo systemctl disable rgb-net
+sudo cp ./rgb-net.service    /etc/systemd/system
+sudo cp ./rgb-net.sh         /usr/local/bin
 sudo systemctl enable  rgb-net
 sudo systemctl start   rgb-net
 
-sudo systemctl --user stop    rgb-sound
-sudo systemctl --user disable rgb-sound
+sudo cp ./rgb-sound.service  /etc/systemd/system
+sudo cp ./rgb-sound.sh        /usr/local/bin
 sudo systemctl --user enable  rgb-sound
 sudo systemctl --user start   rgb-sound
