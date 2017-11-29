@@ -77,6 +77,8 @@ samplerate=0.100 # seconds (100ms for initial testing)
 
 
 # Sleep mode only available when X user is logged in
+# Put your username here
+#
 xuser=dcerisano
 export DISPLAY=:0.0
 

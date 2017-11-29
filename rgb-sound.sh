@@ -9,7 +9,8 @@
 #
 # Special Requirements:
 #
-#   Pulse Audio
+#   Alsasound requires users to be added to audio group:
+#   sudo addgroup user audio
 #
 # To build RGB driver:
 #

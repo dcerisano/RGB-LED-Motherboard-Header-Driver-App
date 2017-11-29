@@ -1,22 +1,25 @@
 #!/bin/bash
 ###############################################################################
 #
-# RGB SOUND VISUALIZER
+# RGB NETWORK VISUALIZER
 #
-#   Real-time sound volume meter for msi-rgb
+#   Real-time newtork visualizer for msi-rgb
 #   D. Cerisano September 4, 2017
 #   Follow msi-rgb build instructions in README
 #
 # Special Requirements:
 #
-#   Pulse Audio
-#
+#   Apache installation serving at least one domain (two given are vrip360 and standard3d)
+#	You need to configure apache logging to include the domain name (%v) in every log entry
+#   Place the following in each domain's sites-available/conf file.
+#   LogFormat "%v - %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"" combined-vhost
+#   Alsasound requires users to be added to audio group:
+#   sudo addgroup user audio
+
 # To build RGB driver:
 #
 #    sudo apt install rustc cargo
 #    cargo --cargo build --release
-#    sudo chown root /target/release/msi-rgb
-#    sudo chmod u+s ./target/release/msi-rgb
 #
 # To test from your git repo: 
 #
@@ -46,10 +49,10 @@
 
 
 # RGB Super I/O Header Constants (loop of 8 rgb settings with configurable delay)
-#  r=00000000      # Default given here is an afterburner spectrum (amber to blue)
-#  g=00000000      # Note that the bytes are little endian, so: 
-#  b=00000000      # Expected curve of cdffedcb must be set as dcffdebc
-#  d=4             # Delay (~ms*10) - note this loop is performed by SIO, not CPU
+  r=00000000      # Default given here is an afterburner spectrum (amber to blue)
+  g=00000000      # Note that the bytes are little endian, so: 
+  b=00000000      # Expected curve of cdffedcb must be set as dcffdebc
+  d=4             # Delay (~ms*10) - note this loop is performed by SIO, not CPU
   
   rgb_driver="./target/release/msi-rgb"  
 
@@ -62,11 +65,12 @@
 
 
 # MAIN LOOP
-
+# Tail the apache log and emit a color and sound for each domain hit.
+#
   tail -F /var/log/apache2/access.log |
   while read line
   do 
-     # skip dummy spawn messages that are tagged with domain names
+     # skip dummy spawn messages that are tagged with domain names. These are not web hits.
      if [[ $line == *"dummy"* ]]
      then
         continue
@@ -75,15 +79,15 @@
      if [[ $line == *"vrip360"* ]]
      then
         aplay /usr/local/share/vrip360.wav &
-        # $rgb_driver 11111111 0 # flash red
+        $rgb_driver 11111111 0 # flash red
      fi
      
      if [[ $line == *"standard3d"* ]]
      then
         aplay /usr/local/share/standard3d.wav &
-        # $rgb_driver 0 11111111 0 # flash green
+        $rgb_driver 0 11111111 0 # flash green
      fi
      
-     # $rgb_driver 0 0 0 # turn down RGB
+     $rgb_driver 0 0 0 # unflash
   done
 
