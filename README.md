@@ -26,13 +26,8 @@
 
 <b>INSTRUCTIONS</b>
 
-- Build RGB driver<br>
-  `sudo apt install rustc cargo`<br>
-  `cargo build --release`<br>
-  
-- Run the effects as outlined in these scripts (follow the instructions):<br>
-  `rgb-cpu-thruster.sh`<br>
-  `rgb-sound-visualizer.sh`<br><br>
+- Read the install.sh script
+- sudo ./install.sh
 
 <b>FAQ</b><br><br>
 <i>Q: Why does this not work on my OS/motherboard?</i><br>
