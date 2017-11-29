@@ -36,7 +36,7 @@ A: Yes - around 1% of a single CPU thread at medium sampling.<br><br>
 <i>Q: Can I run ALL the effects at the same time?</i><br>
 A: Yes - but that will increase system overhead accordingly.<br><br>
 <i>Q: Can I create my own effects?</i><br>
-A: Yes - hack away at the scripts. Hacking the MSI-RGB driver is not recommended for beginners.<br><br>
+A: Yes - hack away at the scripts. Hacking the MSI-RGB driver is not recommended for n00bs.<br><br>
 <i>Q: Why is there no temperature effect?</i><br>
 A: Left as an exercise for you. Linux support for sensors on new SIO chips can be limited. <br>
 A: You can try modprobe nct6775 force_id=0xd120 for new NCT chips<br><br>
