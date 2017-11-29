@@ -7,5 +7,5 @@ sudo sensors-detect
 sudo pwmconfig
 sudo systemctl restart fancontrol
 
-# Configure rgb-cpu.sh with your specific PWM fan (if any, but DON'T use the CPU fan)
+# Configure rgb-cpu.sh with your specific PWM fan (if any, but DON'T configure the CPU fan)
 # Run install-rgb.sh
