@@ -1,4 +1,4 @@
-# If your NUVOTON NCT6795D SIO chip is not suppported by your kernel, this one should work
+# If your NUVOTON NCT6795D SIO chip is not fully suppported by your kernel, this one should work
 sudo /sbin/modprobe nct6775 force_id=0xd120
   
 # Install package deps
