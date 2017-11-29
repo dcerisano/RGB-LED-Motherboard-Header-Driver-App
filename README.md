@@ -37,5 +37,8 @@ A: Yes - around 1% of a single CPU thread at medium sampling.<br><br>
 A: Yes - but that will increase system overhead accordingly.<br><br>
 <i>Q: Can I create my own effects?</i><br>
 A: Yes - hack away at the scripts. Hacking the RGB driver is not recommended for beginners.<br><br>
+<i>Q: Why is there no temperature effect?</i><br>
+A: Left as an exercise for you. Linux support for sensors on new SIO chips can be limited. <br>
+A: You can try modprobe nct6775 force_id=0xd120 for new NCT chips<br><br>
 <i>Q: Might the RGB Sync App be available soon?</i><br>
 A: Yes - it certainly might be.
