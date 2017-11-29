@@ -12,7 +12,7 @@ sudo pwmconfig
 sudo cp ./standard3d.wav      /usr/local/share
 sudo cp ./vrip360.wav         /usr/local/share
 
-# Install the RGB driver
+# Install RGB driver
 cargo build --release
 sudo cp ./target/release/msi-rgb  /usr/local/bin
 
