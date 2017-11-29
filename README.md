@@ -12,8 +12,6 @@
 - <i>Assumes understanding of underlying technologies (see LICENSE).</i><br>
 <br>
 
-
-
 <b>RGB CPU Thruster</b> <i>(Linux/MSI)</i><br>
 ![](http://standard3d.com/assets/img/rgb-cpu-thruster.gif)<br><br>
 
@@ -23,11 +21,11 @@
 <b>RGB Sync App Design</b> <i>(CPU Thruster shown)</i><br>
 ![](http://standard3d.com/assets/img/rgb-gui-placeholder4.gif)<br><br>
 
-
 <b>INSTRUCTIONS</b>
 
 - Read the install.sh, rg-cpu.sh, rgb-sound.sh and rgb-net.sh scripts
-- sudo ./install.sh
+- sudo ./init-sensors.sh
+- sudo ./install-rgb.sh
 
 <b>FAQ</b><br><br>
 <i>Q: Why does this not work on my OS/motherboard?</i><br>
