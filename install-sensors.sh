@@ -7,4 +7,5 @@ sudo sensors-detect
 sudo pwmconfig
 sudo systemctl restart fancontrol
 
-# Make a note of which PWM fan you wish to be managed by the rgb-cpu service (if any, but it is 'cool')
+# Configure rgb-cpu.sh with a specific case fan (if any, but it is 'cool')
+# Then run install-rgb.sh
