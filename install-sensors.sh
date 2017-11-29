@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Install dependencies
 sudo apt install xsensors lm-sensors fancontrol
 
