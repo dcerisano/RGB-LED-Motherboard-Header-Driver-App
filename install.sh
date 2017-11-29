@@ -40,5 +40,3 @@ sudo systemctl --user stop    rgb-sound
 sudo systemctl --user disable rgb-sound
 sudo systemctl --user enable  rgb-sound
 sudo systemctl --user start   rgb-sound
-
-

@@ -26,7 +26,7 @@
 
 <b>INSTRUCTIONS</b>
 
-- Read the install.sh script
+- Read the install.sh, rg-cpu.sh, rgb-sound.sh and rgb-net.sh scripts
 - sudo ./install.sh
 
 <b>FAQ</b><br><br>
