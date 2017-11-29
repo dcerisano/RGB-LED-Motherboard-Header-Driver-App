@@ -27,4 +27,3 @@ sudo cp ./rgb-sound.service  /etc/systemd/system
 sudo cp ./rgb-sound.sh        /usr/local/bin
 sudo systemctl --user enable  rgb-sound
 sudo systemctl --user start   rgb-sound
-
