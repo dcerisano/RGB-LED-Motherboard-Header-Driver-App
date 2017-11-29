@@ -9,6 +9,7 @@ sudo cp ./vrip360.wav         /usr/local/share
 # Install RGB driver
 cargo build --release
 sudo cp ./target/release/msi-rgb  /usr/local/bin
+sudo chmod u+s /usr/local/bin/msi-rgb
 
 # Install and start all RGB services (comment out any you don't want)
 # Read and configure the scripts before installing
@@ -20,8 +21,8 @@ sudo systemctl start   rgb-cpu
 
 sudo cp ./rgb-net.service    /etc/systemd/system
 sudo cp ./rgb-net.sh         /usr/local/bin
-sudo systemctl enable  rgb-net
-sudo systemctl start   rgb-net
+sudo systemctl --user enable  rgb-net
+sudo systemctl --user start   rgb-net
 
 sudo cp ./rgb-sound.service  /etc/systemd/system
 sudo cp ./rgb-sound.sh        /usr/local/bin
