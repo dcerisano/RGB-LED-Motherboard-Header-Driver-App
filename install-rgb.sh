@@ -1,4 +1,6 @@
 
+#!/bin/bash
+
 # Install  dependencies
 sudo apt install rustc cargo make
 sudo cp ./standard3d.wav      /usr/local/share
