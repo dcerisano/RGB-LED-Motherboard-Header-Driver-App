@@ -7,6 +7,7 @@ cargo build --release
 sudo cp ./target/release/msi-rgb  /usr/local/bin
 
 # Install and start all RGB services (comment out any you don't want)
+# Read and configure the scripts before running
 
 sudo cp ./rgb-cpu.service    /etc/systemd/system
 sudo cp ./rgb-cpu.sh         /usr/local/bin
