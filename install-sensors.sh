@@ -1,4 +1,4 @@
-# Install package deps
+# Install dependencies
 sudo apt install xsensors lm-sensors fancontrol
 
 # Install sensors and configure fancontrol
@@ -8,4 +8,4 @@ sudo pwmconfig
 sudo systemctl restart fancontrol
 
 # Configure rgb-cpu.sh with a specific case fan (if any, but it is 'cool')
-# Then run install-rgb.sh
+# Run install-rgb.sh
