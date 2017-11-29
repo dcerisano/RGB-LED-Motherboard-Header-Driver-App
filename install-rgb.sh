@@ -1,6 +1,8 @@
 
-# Install package deps
+# Install  dependencies
 sudo apt install rustc cargo make
+sudo cp ./standard3d.wav      /usr/local/share
+sudo cp ./vrip360.wav         /usr/local/share
 
 # Install RGB driver
 cargo build --release
@@ -24,6 +26,3 @@ sudo cp ./rgb-sound.sh        /usr/local/bin
 sudo systemctl --user enable  rgb-sound
 sudo systemctl --user start   rgb-sound
 
-# Install sound effects 
-sudo cp ./standard3d.wav      /usr/local/share
-sudo cp ./vrip360.wav         /usr/local/share
