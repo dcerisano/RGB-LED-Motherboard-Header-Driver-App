@@ -41,4 +41,4 @@ A: Yes - hack away at the scripts. Hacking the RGB driver is not recommended for
 A: Left as an exercise for you. Linux support for sensors on new SIO chips can be limited. <br>
 A: You can try modprobe nct6775 force_id=0xd120 for new NCT chips<br><br>
 <i>Q: Might the RGB Sync App be available soon?</i><br>
-A: Yes - it certainly might be.
+A: Yes - it certainly might be. Until then, just configure the scripts manually.
