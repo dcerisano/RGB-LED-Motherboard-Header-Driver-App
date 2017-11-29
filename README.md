@@ -34,7 +34,7 @@ A: Contribute to [github.com/nagisa/msi-rgb](https://github.com/nagisa/msi-rgb) 
 <i>Q: Do these effects have any system overhead?</i><br>
 A: Yes - around 1% of a single CPU thread at medium sampling.<br><br>
 <i>Q: Can I run ALL the effects at the same time?</i><br>
-A: Yes - but that will increase CPU overhead accordingly.<br><br>
+A: Yes - but that will increase system overhead accordingly.<br><br>
 <i>Q: Can I create my own effects?</i><br>
 A: Yes - hack away at the scripts. Hacking the RGB driver is not recommended for beginners.<br><br>
 <i>Q: Might the RGB Sync App be available soon?</i><br>
