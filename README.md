@@ -23,7 +23,7 @@
 
 <b>INSTRUCTIONS</b>
 
-- Read the install.sh, rg-cpu.sh, rgb-sound.sh and rgb-net.sh scripts
+- Read the these scripts before running.
 - sudo ./init-sensors.sh
 - sudo ./install-rgb.sh
 
