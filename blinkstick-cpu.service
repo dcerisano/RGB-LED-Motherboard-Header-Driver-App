@@ -1,0 +1,10 @@
+[Unit]
+Description= Blinkstick CPU Visualizer
+After=fancontrol.service
+
+[Service]
+ExecStart=/usr/local/bin/blinkstick-cpu.sh
+
+[Install]
+WantedBy=multi-user.target
+
