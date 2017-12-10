@@ -3,7 +3,7 @@
 #
 # RGB NETWORK VISUALIZER
 #
-#   Real-time newtork visualizer for msi-rgb
+#   Real-time newtork visualizer 
 #   D. Cerisano September 4, 2017
 #   Follow msi-rgb build instructions in README
 #
@@ -42,6 +42,39 @@
 #
 #
 ###############################################################################
+
+
+# Graceful exit: turn off RGB effect.
+  trap 'USER=root; $rgb_driver 0 0 0 -p; exit 1' SIGINT SIGTERM EXIT
+
+  rgb_driver="/usr/local/bin/blinkstick"  
+
+# MAIN LOOP
+
+  tail -F /var/log/apache2/access.log |
+  while read line
+  do 
+     # skip dummy spawn messages that are tagged with domain names
+     if [[ $line == *"dummy"* ]]
+     then
+        continue
+     fi
+  
+     if [[ $line == *"vrip360"* ]]
+     then
+        aplay /usr/local/share/vrip360.wav &
+        $rgb_driver --index 0 --pulse --duration 100 red &
+     fi
+     
+     if [[ $line == *"standard3d"* ]]
+     then
+        aplay /usr/local/share/standard3d.wav &
+        $rgb_driver --index 7 --pulse --duration 100 blue &
+
+     fi
+     
+     # $rgb_driver 0 0 0 # turn down RGB
+  done
 
 
 # Graceful exit: turn off RGB effect.
