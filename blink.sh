@@ -4,7 +4,7 @@
 
 while true
 do
-    if [ $((RANDOM % 100)) -le 50 ]
+    if [ $((RANDOM % 100)) -le 25 ]
     then
 		blinkstick --duration $((RANDOM % 100 + 1)) --morph --index $((RANDOM % 8)) --limit  $((RANDOM % 64 + 1)) random
 	else
