@@ -8,6 +8,6 @@ do
     then
 		blinkstick --duration $((RANDOM % 100 + 1)) --morph --index $((RANDOM % 8)) --limit  $((RANDOM % 64 + 1)) random
 	else
-		blinkstick --duration $((RANDOM % 100 + 1)) --morph --index $((RANDOM % 8)) 040100 
+		blinkstick --duration $((RANDOM % 100 + 1)) --morph --index $((RANDOM % 8)) 0F0800 
 	fi
 done
