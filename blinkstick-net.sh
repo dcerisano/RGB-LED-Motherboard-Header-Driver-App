@@ -40,6 +40,15 @@
   
   rgb_driver="/usr/local/bin/blinkstick"  
 
+  $rgb_driver --index 0 FFFFFF
+  $rgb_driver --index 1 FFFFFF
+  $rgb_driver --index 2 FFFFFF
+  $rgb_driver --index 3 FFFFFF
+  $rgb_driver --index 4 FFFFFF
+  $rgb_driver --index 5 FFFFFF
+  $rgb_driver --index 6 FFFFFF
+  $rgb_driver --index 7 FFFFFF
+
 
 # MAIN LOOP
 

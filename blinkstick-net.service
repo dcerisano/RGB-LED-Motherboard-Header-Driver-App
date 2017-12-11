@@ -1,6 +1,5 @@
 [Unit]
 Description= Blinkstick Network Visualizer
-After=blinkstick-cpu.service
 
 [Install]
 WantedBy=default.target
