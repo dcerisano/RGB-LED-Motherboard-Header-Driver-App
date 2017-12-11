@@ -40,56 +40,65 @@
 #
 ###############################################################################
 
+  rgb_driver="/usr/local/bin/blinkstick"
 
 # Graceful exit: turn off RGB effect and restore fancontrol.
-  trap '$blinkstick_driver; exit 1' SIGINT SIGTERM EXIT
+  trap '$rgb_driver --set-led-count 8; exit 1' SIGINT SIGTERM EXIT
 
-# Bounce fancontrol with reliable nct67xx series driver as of 10/2017
+# Bounce fancontrol with reliable PWM driver as of 10/2017
 #  sudo systemctl stop fancontrol
 #  sudo /sbin/modprobe nct6775 force_id=0xd120
 #  sudo systemctl start fancontrol
 
 # Fan Constants. Select a fan from /etc/fancontrol after running pwmconfig (do not select the CPU fan!)
-  fan=/sys/class/hwmon/hwmon0/pwm3
-  
+  fan=/sys/class/hwmon/hwmon1/device/pwm1
 #  fan=/sys/class/hwmon/hwmon1/device/pwm1
-#  pwm_min=50      # Minimum fan level (very quiet)
-#  pwm_step=7     # (16 cpu levels)*pwm_step+pwm_min = 255 (maximum fan level)
+  pwm_min=50      # Minimum fan level
+  pwm_step=7     # (16 cpu levels)*pwm_step+pwm_min = 255 (maximum fan level)
 
-  pwm_min=85      # Minimum fan level (normal)
-  pwm_step=12     # (16 cpu levels)*pwm_step+pwm_min = 255 (maximum fan level)
-
-  
   rgb_driver="/usr/local/bin/blinkstick"
 
+  $rgb_driver --set-led-count 8 # clear all leds
+
 # CPU Sampling Constant
-samplerate=0.100 # seconds (100ms for initial testing)
+  samplerate=0.100 # seconds (100ms for initial testing)
 
 
 # MAIN LOOP
+  old_led=0
+  new_led=0
   while :
   do
+    led_off=$(( RANDOM % 8 ))
+    led_on=$(( RANDOM % 8 ))
+
+    if [ $((RANDOM % 100)) -le 90 ]
+    then
+      color=804000
+    else
+      color=random
+    fi
+
     # Sample total CPU load percentage every 100ms (returns a scaled floating point percentage)
     cpu=$(cat <(grep 'cpu ' /proc/stat) <(sleep $samplerate && grep 'cpu ' /proc/stat) | awk -v RS="" '{print (($13-$2+$15-$4)*100/($13-$2+$15-$4+$16-$5))/6.5}' )
- 
+
     # Convert float to one of 16 RGB hex brightness levels (0-F)
     int=${cpu%.*}
-    
+
     c=$(printf '%x\n' $int) 
-  
+
     # Sync RGB to CPU load
     if [ $c -le 1 ]
     then # idle
-      if [ $((RANDOM % 100)) -le 25 ]
+      if [ $((RANDOM % 100)) -le 50 ]
       then
-        $rgb_driver --duration $((RANDOM % 50 + 50)) --morph --index $((RANDOM % 8)) --limit  $((RANDOM % 64)) random
-	  else
-		$rgb_driver --duration $((RANDOM % 50 + 50)) --morph --index $((RANDOM % 8)) 0F0800 
-	  fi
-	else # load
-	  $rgb_driver --duration $((RANDOM % 50 + 50)) --index $((RANDOM % 8)) $c$c$c$c$c$c 
-    fi   
-    
+        $rgb_driver --duration 100 --morph --index $led_off 000000
+      else
+        $rgb_driver --duration 100 --morph --index $led_on --limit 96 $color
+      fi
+    else # load
+      $rgb_driver --index $led_on $c$c$c$c$c$c 
+    fi
     # Sync fan to CPU load
     if [ "`systemctl is-active fancontrol`" = "active" ] 
     then
