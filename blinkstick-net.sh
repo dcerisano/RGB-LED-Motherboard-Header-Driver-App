@@ -40,14 +40,14 @@
   
   rgb_driver="/usr/local/bin/blinkstick"  
 
-  $rgb_driver --index 0 402000
-  $rgb_driver --index 1 402000
-  $rgb_driver --index 2 402000
-  $rgb_driver --index 3 402000
-  $rgb_driver --index 4 402000
-  $rgb_driver --index 5 402000
-  $rgb_driver --index 6 402000
-  $rgb_driver --index 7 402000
+  $rgb_driver --index 0 FFFFFF
+  $rgb_driver --index 1 FFFFFF
+  $rgb_driver --index 2 FFFFFF
+  $rgb_driver --index 3 FFFFFF
+  $rgb_driver --index 4 FFFFFF
+  $rgb_driver --index 5 FFFFFF
+  $rgb_driver --index 6 FFFFFF
+  $rgb_driver --index 7 FFFFFF
 
 
 # MAIN LOOP
@@ -64,15 +64,14 @@
      if [[ $line == *"vrip360"* ]]
      then
         aplay /usr/local/share/vrip360.wav &
-        $rgb_driver --index 0 --pulse --duration 100 FF0000 &
+        $rgb_driver --index 0 --pulse --duration 250 FF0000 &
      fi
      
      if [[ $line == *"standard3d"* ]]
      then
         aplay /usr/local/share/standard3d.wav &
-        $rgb_driver --index 7 --pulse --duration 100 8888FF &
+        $rgb_driver --index 7 --pulse --duration 250 8888FF &
 
      fi
      
-     # $rgb_driver 0 0 0 # turn down RGB
   done

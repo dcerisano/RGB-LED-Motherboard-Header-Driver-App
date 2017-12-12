@@ -92,7 +92,7 @@
     then # idle
       if [ $((RANDOM % 100)) -le 50 ]
       then
-        $rgb_driver --duration 100 --morph --index $led_off 000000
+        $rgb_driver --index $led_off 000000
       else
         $rgb_driver --duration 100 --morph --index $led_on --limit 96 $color
       fi
