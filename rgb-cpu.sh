@@ -104,7 +104,7 @@ export DISPLAY=:0.0
     blank=$(sudo -u $xuser xset q)
     if [[ $blank == *"Monitor is Off"* ]]  
       then 
-        $rgb_driver 0 0 11223322   # Sleep mode
+        $rgb_driver 0 0 11111111   # Sleep mode
       else
         $rgb_driver $r $g $b -d $d  # Sync to CPU
     fi

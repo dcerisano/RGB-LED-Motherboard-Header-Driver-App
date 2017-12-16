@@ -90,11 +90,11 @@
     # Sync RGB to CPU load
     if [ $c -le 1 ]
     then # idle
-      if [ $((RANDOM % 100)) -le 50 ]
+      if [ $((RANDOM % 100)) -le 75 ]
       then
         $rgb_driver --duration $((RANDOM % 500)) --morph --index $led_off 000000
       else
-        $rgb_driver --duration $((RANDOM % 500)) --morph --index $led_on --limit 96 $color
+        $rgb_driver --duration $((RANDOM % 500)) --morph --index $led_on --limit 64 $color
       fi
     else # load
       $rgb_driver --index $led_on $c$c$c$c$c$c 
