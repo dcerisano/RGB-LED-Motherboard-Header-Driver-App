@@ -58,8 +58,8 @@
   pwm_step=12     # (16 cpu levels)*pwm_step+pwm_min = 255 (maximum fan level)
 
 # RGB Super I/O Header Constants (loop of 8 rgb settings with configurable delay)
-  r=edffdecd  # Default given here is an afterburner spectrum (amber at min to blue at max)
-  g=11111122  # Note that the bytes are little endian, so:
+  r=edfedecd  # Default given here is an afterburner spectrum (amber at min to blue at max)
+  g=12112132  # Note that the bytes are little endian, so:
   b=00000000  # Expected curve of cdffedcb must be set as dcffdebc
   d=4        # Delay (~ms*10) - note this loop is performed by SIO, not CPU
   
@@ -104,7 +104,7 @@ export DISPLAY=:0.0
     blank=$(sudo -u $xuser xset q)
     if [[ $blank == *"Monitor is Off"* ]]  
       then 
-        $rgb_driver 0 0 11111111   # Sleep mode
+        $rgb_driver 0 0 11111111  # Sleep mode
       else
         $rgb_driver $r $g $b -d $d  # Sync to CPU
     fi
