@@ -42,13 +42,22 @@
 
   rgb_driver="/usr/local/bin/blinkstick"
 
-shutdown()
-{ 
-  $rgb_driver --set-led-count 8
-}
+  powerdown()
+  { 
+    $rgb_driver --index 3 white&
+    $rgb_driver --index 4 white&
+    $rgb_driver --index 2 yellow&
+    $rgb_driver --index 5 yellow&
+    $rgb_driver --index 6 orange&
+    $rgb_driver --index 1 orange&
+    $rgb_driver --index 0 red&
+    $rgb_driver --index 7 red
+      
+    $rgb_driver --set-led-count 8
+  }
 
 # Graceful exit: turn off RGB effect and restore fancontrol.
-  trap shutdown; exit 1' SIGINT SIGTERM EXIT
+  trap 'powerdown; exit 1' SIGINT SIGTERM
 
 # Bounce fancontrol with reliable PWM driver as of 10/2017
 #  sudo systemctl stop fancontrol
@@ -70,7 +79,6 @@ shutdown()
 # MAIN LOOP
  
   led_on=0
-  
   while :
   do
     led_off=$led_on
@@ -95,7 +103,7 @@ shutdown()
     if [ $int -le 1 ]
     then # idle
         $rgb_driver --duration $((RANDOM % 500 + 100)) --morph --index $led_on --limit 64 $color
-        $rgb_driver --duration $((RANDOM % 2000 + 100)) --morph --index $led_off 000000
+        $rgb_driver --duration $((RANDOM % 2000 + 100)) --morph --index $led_off 040404
     else # load
       $rgb_driver --index $led_on $c$c$c$c$c$c 
     fi
