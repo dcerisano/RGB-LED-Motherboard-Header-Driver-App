@@ -42,8 +42,13 @@
 
   rgb_driver="/usr/local/bin/blinkstick"
 
+shutdown()
+{ 
+  $rgb_driver --set-led-count 8
+}
+
 # Graceful exit: turn off RGB effect and restore fancontrol.
-  trap '$rgb_driver --set-led-count 8; exit 1' SIGINT SIGTERM EXIT
+  trap shutdown; exit 1' SIGINT SIGTERM EXIT
 
 # Bounce fancontrol with reliable PWM driver as of 10/2017
 #  sudo systemctl stop fancontrol
@@ -58,25 +63,24 @@
 
   rgb_driver="/usr/local/bin/blinkstick"
 
-  $rgb_driver --set-led-count 8 # clear all leds
-
 # CPU Sampling Constant
   samplerate=0.100 # seconds (100ms for initial testing)
 
 
 # MAIN LOOP
-  old_led=0
-  new_led=0
+ 
+  led_on=0
+  
   while :
   do
-    led_off=$(( RANDOM % 8 ))
+    led_off=$led_on
     led_on=$(( RANDOM % 8 ))
 
-    if [ $((RANDOM % 100)) -le 90 ]
+    if [ $((RANDOM % 100)) -le 50 ]
     then
-      color=804000
+      color=888888 # ambient
     else
-      color=random
+      color=random # interest
     fi
 
     # Sample total CPU load percentage every 100ms (returns a scaled floating point percentage)
@@ -88,14 +92,10 @@
     c=$(printf '%x\n' $int) 
 
     # Sync RGB to CPU load
-    if [ $c -le 1 ]
+    if [ $int -le 1 ]
     then # idle
-      if [ $((RANDOM % 100)) -le 75 ]
-      then
-        $rgb_driver --duration $((RANDOM % 500)) --morph --index $led_off 000000
-      else
-        $rgb_driver --duration $((RANDOM % 500)) --morph --index $led_on --limit 64 $color
-      fi
+        $rgb_driver --duration $((RANDOM % 500 + 100)) --morph --index $led_on --limit 64 $color
+        $rgb_driver --duration $((RANDOM % 2000 + 100)) --morph --index $led_off 000000
     else # load
       $rgb_driver --index $led_on $c$c$c$c$c$c 
     fi
