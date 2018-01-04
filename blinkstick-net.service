@@ -1,8 +1,9 @@
 [Unit]
 Description= Blinkstick Network Visualizer
+After=multi-user.target
 
 [Install]
-WantedBy=default.target
+WantedBy=multi-user.target
 
 [Service]
 ExecStart=/usr/local/bin/blinkstick-net.sh
