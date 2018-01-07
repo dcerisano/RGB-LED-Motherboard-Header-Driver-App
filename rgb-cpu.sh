@@ -46,7 +46,7 @@
 export xuser=dcerisano
 export DISPLAY=:0.0
 
-sudo -u $xuser /home/dcerisano/.nvm/versions/node/v8.9.3/bin/node /home/dcerisano/node/node_modules/blinkstick-node/examples/flex_stream/flex_stream_webserver.js &
+# FOR BLINKSTICK INTEGRATION: sudo -u $xuser /home/dcerisano/.nvm/versions/node/v8.9.3/bin/node /home/dcerisano/node/node_modules/blinkstick-node/examples/flex_stream/flex_stream_webserver.js &
 # Graceful exit: turn off RGB effect and set fan to minimum.
   trap '$rgb_driver 0 0 0 -p; echo $pwm_min > $fan; exit 1' SIGINT SIGTERM EXIT
 
