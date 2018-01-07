@@ -42,7 +42,11 @@
 #
 ###############################################################################
 
+# Sleep mode only available when X user is logged in
+export xuser=dcerisano
+export DISPLAY=:0.0
 
+sudo -u $xuser /home/dcerisano/.nvm/versions/node/v8.9.3/bin/node /home/dcerisano/node/node_modules/blinkstick-node/examples/flex_stream/flex_stream_webserver.js &
 # Graceful exit: turn off RGB effect and set fan to minimum.
   trap '$rgb_driver 0 0 0 -p; echo $pwm_min > $fan; exit 1' SIGINT SIGTERM EXIT
 
@@ -75,11 +79,6 @@
 # CPU Sampling Constant
 samplerate=0.100 # seconds (100ms for initial testing)
 
-
-# Sleep mode only available when X user is logged in
-xuser=dcerisano
-export DISPLAY=:0.0
-
 # MAIN LOOP
   while :
   do
@@ -101,13 +100,25 @@ export DISPLAY=:0.0
     
  
     # Sync RGB to CPU load and screen power management
+    old_blank=$blank
     blank=$(sudo -u $xuser xset q)
-    if [[ $blank == *"Monitor is Off"* ]]  
+    if [[ "$blank" != "$old_blank" ]]
+      then
+        if [[ $blank == *"Monitor is Off"* ]]  
+          then 
+          $rgb_driver 0 0 11111111  # Sleep mode
+          curl http://localhost:5000/?example=aurora
+        else
+          curl http://localhost:5000/?example=cpu_meter
+      fi
+   fi
+
+  
+   if [[ $blank != *"Monitor is Off"* ]]  
       then 
-        $rgb_driver 0 0 11111111  # Sleep mode
-      else
         $rgb_driver $r $g $b -d $d  # Sync to CPU
-    fi
+   fi
+      
       
  
   done
