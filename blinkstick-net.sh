@@ -11,7 +11,7 @@
 #
 #   Pulse Audio
 #   npm blinkstick
-#   In apache conf files for each site:
+#   In apache conf files for each site (this just includes domain name in each log entry):
 #   LogFormat "%v - %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"" combined-vhost
 # To build RGB driver:
 #
