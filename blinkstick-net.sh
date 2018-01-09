@@ -10,7 +10,9 @@
 # Special Requirements:
 #
 #   Pulse Audio
-#
+#   npm blinkstick
+#   In apache conf files for each site:
+#   LogFormat "%v - %h %l %u %t \"%r\" %>s %b \"%{Referer}i\" \"%{User-agent}i\"" combined-vhost
 # To build RGB driver:
 #
 #    sudo apt install rustc cargo
