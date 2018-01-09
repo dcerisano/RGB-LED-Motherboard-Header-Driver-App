@@ -1,23 +1,23 @@
-#!/bin/bash
-###############################################################################
-#
-# RGB CPU THRUSTER
-#
-#   CPU load monitor with synchronized RGB & fan effect
-#   D. Cerisano September 4, 2017
-#   Follow msi-rgb build instructions in README
-#
-# Special Requirements:
-#
-#   Motherboard supported by github.com/nagisa/msi-rgb
-#   fancontrol
-#     sudo apt install lm-sensors fancontrol
-#     sudo /sbin/modprobe nct6775 force_id=0xd120
-#     sudo pwmconfig (use defaults and choose any CASE fan,  eg. hwmon0/pwm3)
-#
-# To build RGB driver:
-#
-#    sudo apt install rustc cargo
+#!/bin/bash                                                                                                                                                                                                     
+###############################################################################                                                                                                                                 
+#                                                                                                                                                                                                               
+# RGB CPU THRUSTER                                                                                                                                                                                              
+#                                                                                                                                                                                                               
+#   CPU load monitor with synchronized RGB & fan effect                                                                                                                                                         
+#   D. Cerisano September 4, 2017                                                                                                                                                                               
+#   Follow msi-rgb build instructions in README                                                                                                                                                                 
+#                                                                                                                                                                                                               
+# Special Requirements:                                                                                                                                                                                         
+#                                                                                                                                                                                                               
+#   Motherboard supported by github.com/nagisa/msi-rgb                                                                                                                                                          
+#   fancontrol                                                                                                                                                                                                  
+#     sudo apt install lm-sensors fancontrol                                                                                                                                                                    
+#     sudo /sbin/modprobe nct6775 force_id=0xd120                                                                                                                                                               
+#     sudo pwmconfig (use defaults and choose any CASE fan,  eg. hwmon0/pwm3)                                                                                                                                   
+#                                                                                                                                                                                                               
+# To build RGB driver:                                                                                                                                                                                          
+#                                                                                                                                                                                                               
+#    sudo apt install rustc cargo                                                                                                                                                                               
 #    cargo --cargo build --release
 #
 # To test from your git repo:
@@ -46,7 +46,7 @@
 export xuser=dcerisano
 export DISPLAY=:0.0
 
-# FOR BLINKSTICK INTEGRATION: sudo -u $xuser /home/dcerisano/.nvm/versions/node/v8.9.3/bin/node /home/dcerisano/node/node_modules/blinkstick-node/examples/flex_stream/flex_stream_webserver.js &
+sudo -u $xuser /home/dcerisano/.nvm/versions/node/v8.9.3/bin/node /home/dcerisano/node/node_modules/blinkstick-node/examples/flex_stream/flex_stream_webserver.js &
 # Graceful exit: turn off RGB effect and set fan to minimum.
   trap '$rgb_driver 0 0 0 -p; echo $pwm_min > $fan; exit 1' SIGINT SIGTERM EXIT
 
@@ -107,9 +107,9 @@ samplerate=0.100 # seconds (100ms for initial testing)
         if [[ $blank == *"Monitor is Off"* ]]  
           then 
           $rgb_driver 0 0 11111111  # Sleep mode
-          curl http://localhost:5000/?example=aurora
+          curl -X GET 'http://dino:5000/?shader=aurora' > /dev/null 2>&1
         else
-          curl http://localhost:5000/?example=cpu_meter
+          curl -X GET 'http://dino:5000/?shader=cpu_meter' > /dev/null 2>&1
       fi
    fi
 
@@ -118,7 +118,4 @@ samplerate=0.100 # seconds (100ms for initial testing)
       then 
         $rgb_driver $r $g $b -d $d  # Sync to CPU
    fi
-      
-      
- 
   done
