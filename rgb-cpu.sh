@@ -46,6 +46,7 @@
 export xuser=dcerisano
 export DISPLAY=:0.0
 
+#Requires npm install rgb-led-matrix
 sudo -u $xuser /home/dcerisano/.nvm/versions/node/v8.9.3/bin/node /home/dcerisano/node/node_modules/rgb-led-matrix/webserver/rgb_led_matrix_server.js &
 # Graceful exit: turn off RGB effect and set fan to minimum.
   trap '$rgb_driver 0 0 0 -p; echo $pwm_min > $fan; exit 1' SIGINT SIGTERM EXIT
