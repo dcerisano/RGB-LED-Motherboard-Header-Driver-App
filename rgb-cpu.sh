@@ -1,4 +1,3 @@
-#!/bin/bash                                                                                                                                                                                                     
 ###############################################################################                                                                                                                                 
 #                                                                                                                                                                                                               
 # RGB CPU THRUSTER                                                                                                                                                                                              
@@ -46,8 +45,8 @@
 export xuser=dcerisano
 export DISPLAY=:0.0
 
-#npm install rgb-led-matrix
-#sudo -u $xuser /home/dcerisano/.nvm/versions/node/v8.9.3/bin/node /home/dcerisano/node/node_modules/rgb-led-matrix/webserver/rgb_led_matrix_server.js &
+
+/home/dcerisano/.nvm/versions/node/v8.9.3/bin/node /home/dcerisano/node/node_modules/rgb-led-matrix/server.js &
 
 # Graceful exit: turn off RGB effect and set fan to minimum.
   trap '$rgb_driver 0 0 0 -p; echo $pwm_min > $fan; exit 1' SIGINT SIGTERM EXIT
@@ -103,15 +102,17 @@ samplerate=0.100 # seconds (100ms for initial testing)
  
     # Sync RGB to CPU load and screen power management
     old_blank=$blank
-    blank=$(sudo -u $xuser xset q)
+#   blank=$(sudo -u $xuser xset q)
+    sudo -u $xuser xhost +
+    blank=$(xset q)
     if [[ "$blank" != "$old_blank" ]]
       then
         if [[ $blank == *"Monitor is Off"* ]]  
           then 
           $rgb_driver 0 0 11111111  # Sleep mode
-          curl -X GET 'http://dino:5000/?shader=aurora' > /dev/null 2>&1
+          curl -X GET 'http://dino:8080/?shader=aurora' > /dev/null 2>&1
         else
-          curl -X GET 'http://dino:5000/?shader=cpu_meter' > /dev/null 2>&1
+          curl -X GET 'http://dino:8080/?shader=cpu_meter' > /dev/null 2>&1
       fi
    fi
 
