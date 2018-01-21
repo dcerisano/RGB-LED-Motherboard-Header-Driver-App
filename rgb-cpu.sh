@@ -102,7 +102,6 @@ samplerate=0.100 # seconds (100ms for initial testing)
  
     # Sync RGB to CPU load and screen power management
     old_blank=$blank
-#   blank=$(sudo -u $xuser xset q)
     sudo -u $xuser xhost +
     blank=$(xset q)
     if [[ "$blank" != "$old_blank" ]]
