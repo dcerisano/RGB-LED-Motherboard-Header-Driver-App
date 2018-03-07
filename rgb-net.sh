@@ -62,13 +62,13 @@
      if [[ $line == *"vrip360"* ]]
      then
         aplay /usr/local/share/vrip360.wav &
-        curl -X GET 'http://dino:8080/api?method=set_shader_req&shader=notifier&image=vrip.jpg' > /dev/null 2>&1 
+        curl -X GET 'http://dino:8080?method=set_shader_req&shader=notifier&image=vrip.jpg' > /dev/null 2>&1 
      fi
      
      if [[ $line == *"standard3d"* ]]
      then
         aplay /usr/local/share/standard3d.wav &
-        curl -X GET 'http://dino:8080/api?method=set_shader_req&shader=notifier&image=s3d.jpg' > /dev/null 2>&1 
+        curl -X GET 'http://dino:8080?method=set_shader_req&shader=notifier&image=s3d.jpg' > /dev/null 2>&1 
      fi
      
   done
