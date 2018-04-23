@@ -71,4 +71,10 @@
         curl -X GET 'http://praxis:8080?method=set_shader_req&shader=notifier&options.image=s3d.jpg' > /dev/null 2>&1 
      fi
      
+          if [[ $line == *"rgbify"* ]]
+     then
+        aplay /usr/local/share/rgbify.wav &
+        curl -X GET 'http://praxis:8080?method=set_shader_req&shader=notifier&options.image=rgbify.jpg' > /dev/null 2>&1 
+     fi
+     
   done
