@@ -62,19 +62,22 @@
      if [[ $line == *"vrip360"* ]]
      then
         aplay /usr/local/share/vrip360.wav &
-        curl -X GET 'http://praxis:8080?method=set_shader_req&shader=notifier&options.image=vrip.jpg' > /dev/null 2>&1 
+        curl -X GET 'http://praxis:8080?method=set_shader_req&shader=notifier&options.image=vrip.png' > /dev/null 2>&1 
+        curl -X GET 'http://kronos:8080?method=set_shader_req&shader=notifier&options.image=vrip.png' > /dev/null 2>&1 
      fi
      
      if [[ $line == *"standard3d"* ]]
      then
         aplay /usr/local/share/standard3d.wav &
-        curl -X GET 'http://praxis:8080?method=set_shader_req&shader=notifier&options.image=s3d.jpg' > /dev/null 2>&1 
+        curl -X GET 'http://praxis:8080?method=set_shader_req&shader=notifier&options.image=s3d.png' > /dev/null 2>&1 
+        curl -X GET 'http://kronos:8080?method=set_shader_req&shader=notifier&options.image=s3d.png' > /dev/null 2>&1 
      fi
      
           if [[ $line == *"rgbify"* ]]
      then
         aplay /usr/local/share/rgbify.wav &
-        curl -X GET 'http://praxis:8080?method=set_shader_req&shader=notifier&options.image=rgbify.jpg' > /dev/null 2>&1 
+        curl -X GET 'http://praxis:8080?method=set_shader_req&shader=notifier&options.image=rgbify.png' > /dev/null 2>&1 
+        curl -X GET 'http://kronos:8080?method=set_shader_req&shader=notifier&options.image=rgbify.png' > /dev/null 2>&1 
      fi
      
   done
